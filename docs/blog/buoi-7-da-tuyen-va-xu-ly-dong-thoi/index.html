@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời | Blog Lập Trình Mạng</title>
+    
+    <meta name="description" content="Ứng dụng Thread, ExecutorService và cơ chế đồng bộ để phục vụ nhiều client." />
+    
+      
+      
+        <meta name="keywords" content="Lập trình mạng, Socket, TCP, UDP, Multithreading, Blog sinh viên">
+      
+    
+    <meta name="theme-color" content="#3b82f6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/Blog_Myself/css/custom.min.9909af19f064160acca69d28103cdb7ce4c9eeea644a98c15e73f4d985199a88.css" integrity="sha256-mQmvGfBkFgrMpp0oEDzbfOTJ7upkSpjBXnP02YUZmog=" />
+    
+  </head>
+  <body data-theme="light">
+    <div class="site-wrapper">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+            <span>Blog Lập Trình Mạng</span>
+          </a>
+          <nav>
+            <button class="nav-toggle" aria-label="Mở menu" data-nav-toggle>☰</button>
+            
+            <div class="nav-links">
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                
+              
+            </div>
+          </nav>
+          <div class="nav-actions">
+            <button class="theme-switch" aria-label="Toggle theme" data-theme-toggle>🌙</button>
+            
+              <a class="button button--primary" href="/Blog_Myself/contact/">Liên hệ</a>
+            
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        
+  
+  <section class="post-hero">
+    
+      <span class="badge">Buổi 7</span>
+    
+    <h1 class="section__heading">Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời</h1>
+    <p class="post-hero__meta">
+      16 Dec 2024
+       · 2 phút đọc
+       · 3 tags
+    </p>
+  </section>
+
+  <section class="section">
+    
+      
+      
+        
+      
+      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+    
+    <article class="post-content">
+      
+        <div class="session-card">
+          <h3>Tóm tắt buổi 7</h3>
+          <ul>
+            <li><strong>Ngày học:</strong> 16/12/2024</li>
+            <li><strong>Tags:</strong> Threads, Executor, Concurrency</li>
+          </ul>
+        </div>
+      
+      <h2 id="mục-tiêu-buổi-học">Mục tiêu buổi học</h2>
+<ul>
+<li>Biết lựa chọn mô hình thread phù hợp (per-connection, thread-pool).</li>
+<li>Ngăn chặn race condition khi chia sẻ tài nguyên chung.</li>
+<li>Ghi nhận số lượng client đang kết nối theo thời gian thực.</li>
+</ul>
+<h2 id="kiến-thức-chính">Kiến thức chính</h2>
+<ol>
+<li><code>ExecutorService</code> và pattern submit task cho từng client.</li>
+<li>Sử dụng <code>ConcurrentHashMap</code> để lưu trạng thái kết nối.</li>
+<li>Kết hợp synchronized/lock để bảo vệ tài nguyên quan trọng.</li>
+</ol>
+<h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
+<p>Mình refactor bài TCP trước đó để tận dụng <code>Executors.newFixedThreadPool(8)</code>. Nhờ vậy server không tạo quá nhiều thread dẫn đến cạn kiệt tài nguyên. Ngoài ra, mình thêm bộ đếm <code>AtomicInteger</code> để biết hiện có bao nhiêu client online. Báo cáo cũng so sánh thời gian phản hồi giữa mô hình tuần tự và thread-pool.</p>
+<h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> executor <span style="color:#f92672">=</span> java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">concurrent</span>.<span style="color:#a6e22e">Executors</span>.<span style="color:#a6e22e">newFixedThreadPool</span>(8);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> connections <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">concurrent</span>.<span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">AtomicInteger</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> server <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">ServerSocket</span>(10003)) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> server.<span style="color:#a6e22e">accept</span>();
+</span></span><span style="display:flex;"><span>    executor.<span style="color:#a6e22e">submit</span>(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> current <span style="color:#f92672">=</span> connections.<span style="color:#a6e22e">incrementAndGet</span>();
+</span></span><span style="display:flex;"><span>      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client vào, tổng: &#34;</span> <span style="color:#f92672">+</span> current);
+</span></span><span style="display:flex;"><span>      handle(socket);
+</span></span><span style="display:flex;"><span>      current <span style="color:#f92672">=</span> connections.<span style="color:#a6e22e">decrementAndGet</span>();
+</span></span><span style="display:flex;"><span>      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client thoát, còn: &#34;</span> <span style="color:#f92672">+</span> current);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p><code>handle</code> tái sử dụng logic đọc/ghi cũ nhưng giờ an toàn hơn.</p>
+<h2 id="tổng-kết">Tổng kết</h2>
+<ul>
+<li>Thống nhất giới hạn thread để tránh server bị DOS.</li>
+<li>Ghi log trạng thái để dễ làm báo cáo phân tích tải.</li>
+<li>Chuẩn bị cho buổi cuối về multicast và RMI.</li>
+</ul>
+
+    </article>
+
+    
+      <div class="project-stack">
+        
+          <span class="chip">Threads</span>
+        
+          <span class="chip">Executor</span>
+        
+          <span class="chip">Concurrency</span>
+        
+      </div>
+    
+
+    <div class="comment-box" id="comments">
+      <h3>Thảo luận</h3>
+      
+        <p>Bạn có thể bật hệ thống bình luận (Disqus/Giscus) bằng cách cấu hình trong <code>config.toml</code>.</p>
+      
+    </div>
+  </section>
+
+  
+  
+
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div>
+              <h3>Blog Lập Trình Mạng</h3>
+              <p>Blog ghi chép lý thuyết, bài lab và kinh nghiệm môn Lập Trình Mạng phục vụ việc học và báo cáo cuối kỳ.</p>
+            </div>
+            <div>
+              <h4>Kết nối</h4>
+              <div class="footer__links">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+              </div>
+            </div>
+            <div class="contact-card" id="contact">
+              <h4>Liên hệ</h4>
+              <a href="mailto:21120456@student.university.edu.vn">Email</a>
+              <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub Projects</a>
+            </div>
+          </div>
+          <p class="footer__copy">© 2025 Nguyễn Tài Trung · All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    
+    <script src="/Blog_Myself/js/app.min.04f121891eebbd5357d564f597596f68ec2f8a77f09481916b76729e968ce3fb.js" integrity="sha256-BPEhiR7rvVNX1WT1l1lvaOwvinfwlIGRa3ZynpaM4/s=" defer></script>
+    
+    
+  </body>
+</html>

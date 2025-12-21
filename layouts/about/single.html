@@ -1,0 +1,73 @@
+{{ define "main" }}
+  <section class="section about-layout">
+    <article class="card about-card">
+      <div class="about-avatar">
+        <img src="{{ .Site.Params.aboutPhoto | relLangURL }}" alt="{{ .Site.Params.author }}">
+      </div>
+      <div class="about-content">
+        {{ .Content }}
+      </div>
+    </article>
+
+    <article class="card info-card">
+      <h3>Thông tin sinh viên</h3>
+      {{ with .Site.Params.student }}
+        <p><span class="badge">Họ tên</span> {{ .name }}</p>
+        <p><span class="badge">MSSV</span> {{ .studentID }}</p>
+        <p><span class="badge">Lớp</span> {{ .class }}</p>
+        <p><span class="badge">Môn học</span> {{ .subject }}</p>
+      {{ end }}
+      <h4>Liên hệ</h4>
+      <div class="contact-card">
+        {{ with .Site.Params.email }}<a href="{{ . }}">Email</a>{{ end }}
+        {{ with .Site.Params.social.github }}<a target="_blank" rel="noopener" href="{{ . }}">GitHub</a>{{ end }}
+      </div>
+      {{ $cv := .Site.Params.cv }}
+      {{ if $cv }}
+        <div class="cv-mini">
+          <h4>{{ $cv.title }}</h4>
+          <p class="cv-mini__desc">{{ $cv.description }}</p>
+          <div class="cv-mini__actions">
+            {{ with $cv.file }}
+              <a class="button button--primary" href="{{ . | relLangURL }}" download>{{ $cv.downloadLabel | default "Tải CV PDF" }}</a>
+              <a class="button button--ghost" href="{{ . | relLangURL }}" target="_blank" rel="noopener">{{ $cv.viewerLabel | default "Xem CV online" }}</a>
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+
+      {{ with .Site.Params.certificates }}
+        <div class="cert-list">
+          <h4>Chứng chỉ</h4>
+          <ul>
+            {{ range . }}
+              <li>
+                <div>
+                  <strong>{{ .title }}</strong>
+                  {{ with .issuer }}<span>{{ . }}</span>{{ end }}
+                </div>
+                <a class="course-link" href="{{ .file | relLangURL }}" target="_blank" rel="noopener">PDF</a>
+              </li>
+            {{ end }}
+          </ul>
+        </div>
+      {{ end }}
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section__heading">Kỹ năng đang rèn luyện</h2>
+    <div class="skills">
+      {{ range .Site.Params.skills }}
+        <article class="skill">
+          <div class="skill__meta">
+            <span>{{ .name }}</span>
+            <span>{{ .level }}%</span>
+          </div>
+          <div class="skill__bar"><span style="--percent: {{ printf "%d%%" .level }};"></span></div>
+          <p>{{ .description }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

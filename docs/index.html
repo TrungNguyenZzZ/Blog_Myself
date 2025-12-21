@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+  <head>
+	<meta name="generator" content="Hugo 0.152.2">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Lập Trình Mạng</title>
+    
+    <meta name="description" content="Blog học tập môn Lập Trình Mạng: lý thuyết, bài lab và kinh nghiệm thực hành TCP/UDP, Socket, Multithreading." />
+    
+      
+      
+        <meta name="keywords" content="Lập trình mạng, Socket, TCP, UDP, Multithreading, Blog sinh viên">
+      
+    
+    <meta name="theme-color" content="#3b82f6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/Blog_Myself/css/custom.min.9909af19f064160acca69d28103cdb7ce4c9eeea644a98c15e73f4d985199a88.css" integrity="sha256-mQmvGfBkFgrMpp0oEDzbfOTJ7upkSpjBXnP02YUZmog=" />
+    
+  </head>
+  <body data-theme="light">
+    <div class="site-wrapper">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+            <span>Blog Lập Trình Mạng</span>
+          </a>
+          <nav>
+            <button class="nav-toggle" aria-label="Mở menu" data-nav-toggle>☰</button>
+            
+            <div class="nav-links">
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                
+              
+            </div>
+          </nav>
+          <div class="nav-actions">
+            <button class="theme-switch" aria-label="Toggle theme" data-theme-toggle>🌙</button>
+            
+              <a class="button button--primary" href="/Blog_Myself/contact/">Liên hệ</a>
+            
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        
+  <section id="hero" class="hero hero--course">
+    <div class="hero__grid hero__grid--course">
+      <div>
+        <p class="hero__badge">Blog học tập · Lập Trình Mạng</p>
+        <h1 class="hero__title">Blog Lập Trình Mạng</h1>
+        <p class="hero__subtitle">Ghi chép kiến thức và bài thực hành môn Lập Trình Mạng cho sinh viên.</p>
+        
+          <ul class="student-meta">
+            <li><span>Họ tên</span>Nguyễn Tài Trung</li>
+            <li><span>MSSV</span>2280618942</li>
+            <li><span>Lớp</span>22DTHE6</li>
+            <li><span>Môn học</span>Lập Trình Mạng</li>
+          </ul>
+        
+        <div class="nav-actions hero-actions">
+          <a class="button button--primary" href="/Blog_Myself/blog/">Xem bài mới nhất</a>
+          <a class="button button--ghost" href="/Blog_Myself/course/">Giới thiệu môn học</a>
+        </div>
+      </div>
+      <div class="hero__media hero__media--photo">
+        <img src="/Blog_Myself/images/avatar.jpg" alt="Nguyễn Tài Trung">
+      </div>
+    </div>
+  </section>
+
+  <section class="section outline-section">
+    <div class="card">
+      <h2 class="section__heading">Outline môn học</h2>
+      <div class="outline-wrapper">
+        <ul class="outline-snippet">
+          
+            <li>
+              <span>Buổi 01</span>
+              <div>
+                <strong>Tổng quan khóa học</strong>
+                <p>Cam kết môn học</p>
+              </div>
+            </li>
+          
+            <li>
+              <span>Buổi 02</span>
+              <div>
+                <strong>Kiến thức nền tảng</strong>
+                <p>Layer OSI/TCP-IP</p>
+              </div>
+            </li>
+          
+            <li>
+              <span>Buổi 03</span>
+              <div>
+                <strong>Quản lý luồng nhập xuất</strong>
+                <p>Stream trong Java</p>
+              </div>
+            </li>
+          
+            <li>
+              <span>Buổi 04</span>
+              <div>
+                <strong>Địa chỉ kết nối mạng</strong>
+                <p>IP, Port, DNS</p>
+              </div>
+            </li>
+          
+        </ul>
+        <a class="course-link" href="/Blog_Myself/course/">Xem toàn bộ syllabus →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section__heading">Chủ đề trọng tâm</h2>
+    <p class="section__lead">Blog ghi chép lý thuyết, bài lab và kinh nghiệm môn Lập Trình Mạng phục vụ việc học và báo cáo cuối kỳ.</p>
+    <div class="highlight-grid">
+      
+        <article class="card highlight-card">
+          <h3>TCP/UDP căn bản</h3>
+          <p>Ôn lại mô hình OSI, vai trò của TCP/UDP và cách chọn giao thức phù hợp cho ứng dụng.</p>
+        </article>
+      
+        <article class="card highlight-card">
+          <h3>Socket API trên Java</h3>
+          <p>Thực hành tạo server/client, quản lý kết nối và xử lý luồng dữ liệu.</p>
+        </article>
+      
+        <article class="card highlight-card">
+          <h3>Đồng thời và tối ưu</h3>
+          <p>Ứng dụng thread pool, đồng bộ hóa và xử lý đa kết nối.</p>
+        </article>
+      
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section__heading">Kỹ năng & công cụ</h2>
+    <p class="section__lead">Các kỹ năng được sử dụng xuyên suốt bài lab Lập Trình Mạng.</p>
+    <div class="skills">
+      
+        <article class="skill">
+          <div class="skill__meta">
+            <span>Socket Programming</span>
+            <span>80%</span>
+          </div>
+          <div class="skill__bar"><span style="--percent: 80%;"></span></div>
+          <p>Tạo server/client, quản lý kết nối, xử lý protocol.</p>
+        </article>
+      
+        <article class="skill">
+          <div class="skill__meta">
+            <span>TCP/UDP</span>
+            <span>75%</span>
+          </div>
+          <div class="skill__bar"><span style="--percent: 75%;"></span></div>
+          <p>Thiết kế gói tin, kiểm soát lỗi, xử lý mất gói.</p>
+        </article>
+      
+        <article class="skill">
+          <div class="skill__meta">
+            <span>Client-Server</span>
+            <span>70%</span>
+          </div>
+          <div class="skill__bar"><span style="--percent: 70%;"></span></div>
+          <p>Xây dựng mô hình dịch vụ theo yêu cầu môn học.</p>
+        </article>
+      
+        <article class="skill">
+          <div class="skill__meta">
+            <span>Multithreading</span>
+            <span>65%</span>
+          </div>
+          <div class="skill__bar"><span style="--percent: 65%;"></span></div>
+          <p>Triển khai thread pool, đồng bộ tài nguyên.</p>
+        </article>
+      
+    </div>
+  </section>
+
+  <section class="section" id="latest-posts">
+    <h2 class="section__heading">Bài blog mới nhất</h2>
+    <p class="section__lead">Ghi chép lý thuyết và bài thực hành theo từng buổi.</p>
+    <div class="post-list">
+      
+      
+        
+        
+          
+        
+        <article class="post-list__item card" data-post-card data-title="Buổi 8 (23/12) – Multicast UDP &amp; Java RMI">
+          <div class="post-list__thumb">
+            <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 8 (23/12) – Multicast UDP &amp; Java RMI" loading="lazy" />
+          </div>
+          <div class="post-list__body">
+            <p class="post-list__meta">Buổi 8 · 23/12</p>
+            <h3>Buổi 8 (23/12) – Multicast UDP &amp; Java RMI</h3>
+            <p>Kết hợp MulticastSocket cho thông báo nhóm và triển khai dịch vụ Java RMI đơn giản.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/">Đọc bài →</a>
+          </div>
+        </article>
+      
+        
+        
+          
+        
+        <article class="post-list__item card" data-post-card data-title="Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời">
+          <div class="post-list__thumb">
+            <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời" loading="lazy" />
+          </div>
+          <div class="post-list__body">
+            <p class="post-list__meta">Buổi 7 · 16/12</p>
+            <h3>Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời</h3>
+            <p>Ứng dụng Thread, ExecutorService và cơ chế đồng bộ để phục vụ nhiều client.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-7-da-tuyen-va-xu-ly-dong-thoi/">Đọc bài →</a>
+          </div>
+        </article>
+      
+        
+        
+          
+        
+        <article class="post-list__item card" data-post-card data-title="Buổi 6 (09/12) – Lập trình socket UDP">
+          <div class="post-list__thumb">
+            <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 6 (09/12) – Lập trình socket UDP" loading="lazy" />
+          </div>
+          <div class="post-list__body">
+            <p class="post-list__meta">Buổi 6 · 09/12</p>
+            <h3>Buổi 6 (09/12) – Lập trình socket UDP</h3>
+            <p>Triển khai DatagramSocket, xử lý timeout và bổ sung ACK thủ công.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/">Đọc bài →</a>
+          </div>
+        </article>
+      
+        
+        
+          
+        
+        <article class="post-list__item card" data-post-card data-title="Buổi 5 (02/12) – Lập trình sockets TCP">
+          <div class="post-list__thumb">
+            <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 5 (02/12) – Lập trình sockets TCP" loading="lazy" />
+          </div>
+          <div class="post-list__body">
+            <p class="post-list__meta">Buổi 5 · 02/12</p>
+            <h3>Buổi 5 (02/12) – Lập trình sockets TCP</h3>
+            <p>Xây dựng server TCP đơn giản, xử lý nhiều client và thiết kế giao thức text.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/">Đọc bài →</a>
+          </div>
+        </article>
+      
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="card contact-card">
+      <span class="badge">Thông tin</span>
+      <h2 class="section__heading">Liên hệ để trao đổi bài lab</h2>
+      <p>Sẵn sàng trao đổi, hướng dẫn lab và chia sẻ kinh nghiệm môn học.</p>
+      <div class="contact-links">
+        <a class="button button--primary" href="mailto:21120456@student.university.edu.vn">Gửi email</a>
+        <a class="button button--ghost" href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <a class="course-link" href="/Blog_Myself/contact/">Tới trang Contact →</a>
+    </div>
+  </section>
+
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div>
+              <h3>Blog Lập Trình Mạng</h3>
+              <p>Blog ghi chép lý thuyết, bài lab và kinh nghiệm môn Lập Trình Mạng phục vụ việc học và báo cáo cuối kỳ.</p>
+            </div>
+            <div>
+              <h4>Kết nối</h4>
+              <div class="footer__links">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+              </div>
+            </div>
+            <div class="contact-card" id="contact">
+              <h4>Liên hệ</h4>
+              <a href="mailto:21120456@student.university.edu.vn">Email</a>
+              <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub Projects</a>
+            </div>
+          </div>
+          <p class="footer__copy">© 2025 Nguyễn Tài Trung · All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    
+    <script src="/Blog_Myself/js/app.min.04f121891eebbd5357d564f597596f68ec2f8a77f09481916b76729e968ce3fb.js" integrity="sha256-BPEhiR7rvVNX1WT1l1lvaOwvinfwlIGRa3ZynpaM4/s=" defer></script>
+    
+    
+  </body>
+</html>

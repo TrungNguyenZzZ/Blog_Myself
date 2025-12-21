@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode | default "vi" }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ block "title" . }}{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}{{ end }}</title>
+    {{ $description := cond (ne .Description "") .Description (.Site.Params.seo.description | default .Site.Params.bio) }}
+    <meta name="description" content="{{ $description }}" />
+    {{ with or .Params.keywords .Site.Params.seo.keywords }}
+      {{ $keys := . }}
+      {{ if reflect.IsSlice $keys }}
+        <meta name="keywords" content="{{ delimit $keys ", " }}">
+      {{ else }}
+        <meta name="keywords" content="{{ $keys }}">
+      {{ end }}
+    {{ end }}
+    <meta name="theme-color" content="#3b82f6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet" />
+    {{ $css := resources.Get "css/custom.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" />
+    {{ block "extra_head" . }}{{ end }}
+  </head>
+  <body data-theme="light">
+    <div class="site-wrapper">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="logo" href="{{ .Site.BaseURL }}">
+            <span>{{ .Site.Title }}</span>
+          </a>
+          <nav>
+            <button class="nav-toggle" aria-label="Mở menu" data-nav-toggle>☰</button>
+            {{ $base := strings.TrimRight "/" .Site.BaseURL }}
+            <div class="nav-links">
+              {{ range .Site.Params.navLinks }}
+                {{ $url := .url }}
+                {{ if hasPrefix $url "#" }}
+                  <a href="{{ $url }}">{{ .label }}</a>
+                {{ else if hasPrefix $url "/#" }}
+                  {{ $anchor := strings.TrimPrefix "/#" $url }}
+                  <a href="{{ printf "%s/#%s" $base $anchor }}">{{ .label }}</a>
+                {{ else }}
+                  {{ $path := strings.TrimPrefix "/" $url }}
+                  <a href="{{ printf "%s/%s" $base $path }}">{{ .label }}</a>
+                {{ end }}
+              {{ end }}
+            </div>
+          </nav>
+          <div class="nav-actions">
+            <button class="theme-switch" aria-label="Toggle theme" data-theme-toggle>🌙</button>
+            {{ with .Site.Params.contactCTA }}
+              <a class="button button--primary" href="{{ "contact/" | relLangURL }}">{{ . }}</a>
+            {{ end }}
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        {{ block "main" . }}{{ end }}
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div>
+              <h3>{{ .Site.Title }}</h3>
+              <p>{{ .Site.Params.bio }}</p>
+            </div>
+            <div>
+              <h4>Kết nối</h4>
+              <div class="footer__links">
+                {{ with .Site.Params.social.linkedin }}<a href="{{ . }}" target="_blank" rel="noopener">LinkedIn</a>{{ end }}
+                {{ with .Site.Params.social.github }}<a href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end }}
+                {{ with .Site.Params.social.twitter }}<a href="{{ . }}" target="_blank" rel="noopener">Twitter</a>{{ end }}
+                {{ with .Site.Params.social.facebook }}<a href="{{ . }}" target="_blank" rel="noopener">Facebook</a>{{ end }}
+              </div>
+            </div>
+            <div class="contact-card" id="contact">
+              <h4>Liên hệ</h4>
+              {{ with .Site.Params.email }}<a href="{{ . }}">Email</a>{{ end }}
+              <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub Projects</a>
+            </div>
+          </div>
+          <p class="footer__copy">© {{ now.Format "2006" }} {{ .Site.Params.author }} · All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    {{ $js := resources.Get "js/app.js" | minify | fingerprint }}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+    {{ block "scripts" . }}{{ end }}
+    {{ if and .IsPage (eq .Site.Params.comments.provider "disqus") (ne .Site.Params.comments.shortname "") }}
+      <script>
+        var disqus_config = function () {
+          this.page.url = "{{ .Permalink }}";
+          this.page.identifier = "{{ .RelPermalink }}";
+        };
+        (function () {
+          var d = document,
+            s = d.createElement("script");
+          s.src = "https://{{ .Site.Params.comments.shortname }}.disqus.com/embed.js";
+          s.setAttribute("data-timestamp", +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    {{ end }}
+  </body>
+</html>

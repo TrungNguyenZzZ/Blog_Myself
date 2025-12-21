@@ -1,0 +1,53 @@
+{{ define "main" }}
+  <section class="post-hero">
+    <span class="badge">Nhật ký môn học</span>
+    <h1 class="section__heading">{{ or .Title "Blog" }}</h1>
+    <p class="section__lead">{{ with .Params.description }}{{ . }}{{ else }}Danh sách bài viết theo từng buổi học, trình bày rõ ràng cho giảng viên đánh giá.{{ end }}</p>
+  </section>
+
+  <section class="section">
+    <div class="search-bar">
+      <input type="search" placeholder="Tìm kiếm theo tiêu đề..." data-search>
+    </div>
+
+    {{ $pages := .Pages }}
+    {{ if not $pages }}
+      {{ $pages = where .Site.RegularPages "Section" "blog" }}
+    {{ end }}
+    {{ $sorted := sort $pages ".Params.session" "asc" }}
+    {{ $paginator := .Paginate $sorted }}
+
+    <div class="timeline">
+      {{ range $paginator.Pages }}
+        {{ $img := .Params.featuredImage | default "images/network-placeholder.png" }}
+        {{ if not (strings.HasPrefix $img "http") }}
+          {{ $img = $img | relLangURL }}
+        {{ end }}
+        <article class="timeline__item card" data-post-card data-title="{{ .Title }}">
+          <div class="timeline__dot"></div>
+          <div class="timeline__body">
+            <p class="timeline__meta">Buổi {{ .Params.session }} · {{ .Date.Format "02/01" }}</p>
+            <h2 class="blog-card__title">{{ .Title }}</h2>
+            <p class="card__excerpt">{{ .Params.description | default (.Summary | plainify) }}</p>
+            <div class="timeline__tags">
+              {{ range .Params.tags }}
+                <span class="chip">{{ . }}</span>
+              {{ end }}
+            </div>
+            <a class="button button--ghost" href="{{ .RelPermalink }}">Đọc chi tiết →</a>
+          </div>
+        </article>
+      {{ else }}
+        <p>Hiện chưa có bài viết nào.</p>
+      {{ end }}
+    </div>
+
+    {{ if gt $paginator.TotalPages 1 }}
+      <div class="pagination">
+        {{ if $paginator.HasPrev }}<a class="button button--ghost" href="{{ $paginator.Prev.URL }}">← Trang trước</a>{{ end }}
+        <span class="chip">Trang {{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+        {{ if $paginator.HasNext }}<a class="button button--ghost" href="{{ $paginator.Next.URL }}">Trang sau →</a>{{ end }}
+      </div>
+    {{ end }}
+  </section>
+{{ end }}

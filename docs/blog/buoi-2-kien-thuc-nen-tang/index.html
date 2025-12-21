@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buổi 2 (18/11) – Kiến thức nền tảng | Blog Lập Trình Mạng</title>
+    
+    <meta name="description" content="Ôn lại mô hình OSI/TCP-IP, phân biệt TCP và UDP, giới thiệu Socket API." />
+    
+      
+      
+        <meta name="keywords" content="Lập trình mạng, Socket, TCP, UDP, Multithreading, Blog sinh viên">
+      
+    
+    <meta name="theme-color" content="#3b82f6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/Blog_Myself/css/custom.min.9909af19f064160acca69d28103cdb7ce4c9eeea644a98c15e73f4d985199a88.css" integrity="sha256-mQmvGfBkFgrMpp0oEDzbfOTJ7upkSpjBXnP02YUZmog=" />
+    
+  </head>
+  <body data-theme="light">
+    <div class="site-wrapper">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+            <span>Blog Lập Trình Mạng</span>
+          </a>
+          <nav>
+            <button class="nav-toggle" aria-label="Mở menu" data-nav-toggle>☰</button>
+            
+            <div class="nav-links">
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                
+              
+            </div>
+          </nav>
+          <div class="nav-actions">
+            <button class="theme-switch" aria-label="Toggle theme" data-theme-toggle>🌙</button>
+            
+              <a class="button button--primary" href="/Blog_Myself/contact/">Liên hệ</a>
+            
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        
+  
+  <section class="post-hero">
+    
+      <span class="badge">Buổi 2</span>
+    
+    <h1 class="section__heading">Buổi 2 (18/11) – Kiến thức nền tảng</h1>
+    <p class="post-hero__meta">
+      18 Nov 2024
+       · 2 phút đọc
+       · 3 tags
+    </p>
+  </section>
+
+  <section class="section">
+    
+      
+      
+        
+      
+      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 2 (18/11) – Kiến thức nền tảng" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+    
+    <article class="post-content">
+      
+        <div class="session-card">
+          <h3>Tóm tắt buổi 2</h3>
+          <ul>
+            <li><strong>Ngày học:</strong> 18/11/2024</li>
+            <li><strong>Tags:</strong> TCP, UDP, Socket</li>
+          </ul>
+        </div>
+      
+      <h2 id="mục-tiêu-buổi-học">Mục tiêu buổi học</h2>
+<ul>
+<li>Ghi nhớ mối liên hệ giữa OSI 7 lớp và TCP/IP.</li>
+<li>Nhận biết khi nào nên chọn TCP hay UDP.</li>
+<li>Hiểu cấu trúc cơ bản của Socket API trong Java.</li>
+</ul>
+<h2 id="kiến-thức-chính">Kiến thức chính</h2>
+<ol>
+<li>Layer Transport và nhiệm vụ đảm bảo tin cậy/không tin cậy.</li>
+<li>Định dạng tiêu đề TCP/UDP, ý nghĩa từng trường.</li>
+<li>Luồng xử lý khi gọi <code>new Socket()</code> và <code>new ServerSocket()</code>.</li>
+</ol>
+<h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
+<p>Giảng viên yêu cầu trình bày lại quá trình handshake của TCP và cách UDP gửi datagram độc lập. Mình rút ra rằng socket chỉ là điểm cuối của kết nối, còn logic truyền thông phụ thuộc vào cách đóng gói dữ liệu. Khi viết báo cáo, mình so sánh ưu/nhược từng giao thức và minh họa bằng trường hợp sử dụng thực tế như truyền file (TCP) hay gửi thông báo nhanh (UDP).</p>
+<h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
+<p>Đoạn code nhỏ sau mô tả cách mở socket TCP và in thông tin kết nối:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Socket</span>(<span style="color:#e6db74">&#34;example.com&#34;</span>, 80)) {
+</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Local: &#34;</span> <span style="color:#f92672">+</span> socket.<span style="color:#a6e22e">getLocalAddress</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">+</span> socket.<span style="color:#a6e22e">getLocalPort</span>());
+</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Remote: &#34;</span> <span style="color:#f92672">+</span> socket.<span style="color:#a6e22e">getInetAddress</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">+</span> socket.<span style="color:#a6e22e">getPort</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Chỉ cần chạy đoạn code là có thể quan sát port được OS cấp phát và kiểm tra firewall.</p>
+<h2 id="tổng-kết">Tổng kết</h2>
+<ul>
+<li>Ghi nhớ rõ các trường trong header TCP/UDP để dễ debug.</li>
+<li>Khi thiết kế bài lab nên quyết định giao thức trước khi viết code.</li>
+<li>Chuẩn bị slide mô tả handshake để dùng ở các lab tiếp theo.</li>
+</ul>
+
+    </article>
+
+    
+      <div class="project-stack">
+        
+          <span class="chip">TCP</span>
+        
+          <span class="chip">UDP</span>
+        
+          <span class="chip">Socket</span>
+        
+      </div>
+    
+
+    <div class="comment-box" id="comments">
+      <h3>Thảo luận</h3>
+      
+        <p>Bạn có thể bật hệ thống bình luận (Disqus/Giscus) bằng cách cấu hình trong <code>config.toml</code>.</p>
+      
+    </div>
+  </section>
+
+  
+  
+    <section class="section">
+      <h2 class="section__heading">Bài viết liên quan</h2>
+      <div class="related-grid">
+        
+          <article class="card">
+            <h3>Buổi 8 (23/12) – Multicast UDP &amp; Java RMI</h3>
+            <p>Kết hợp MulticastSocket cho thông báo nhóm và triển khai dịch vụ Java RMI đơn giản.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/">Đọc tiếp →</a>
+          </article>
+        
+          <article class="card">
+            <h3>Buổi 6 (09/12) – Lập trình socket UDP</h3>
+            <p>Triển khai DatagramSocket, xử lý timeout và bổ sung ACK thủ công.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/">Đọc tiếp →</a>
+          </article>
+        
+          <article class="card">
+            <h3>Buổi 5 (02/12) – Lập trình sockets TCP</h3>
+            <p>Xây dựng server TCP đơn giản, xử lý nhiều client và thiết kế giao thức text.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/">Đọc tiếp →</a>
+          </article>
+        
+      </div>
+    </section>
+  
+
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div>
+              <h3>Blog Lập Trình Mạng</h3>
+              <p>Blog ghi chép lý thuyết, bài lab và kinh nghiệm môn Lập Trình Mạng phục vụ việc học và báo cáo cuối kỳ.</p>
+            </div>
+            <div>
+              <h4>Kết nối</h4>
+              <div class="footer__links">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+              </div>
+            </div>
+            <div class="contact-card" id="contact">
+              <h4>Liên hệ</h4>
+              <a href="mailto:21120456@student.university.edu.vn">Email</a>
+              <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub Projects</a>
+            </div>
+          </div>
+          <p class="footer__copy">© 2025 Nguyễn Tài Trung · All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    
+    <script src="/Blog_Myself/js/app.min.04f121891eebbd5357d564f597596f68ec2f8a77f09481916b76729e968ce3fb.js" integrity="sha256-BPEhiR7rvVNX1WT1l1lvaOwvinfwlIGRa3ZynpaM4/s=" defer></script>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,120 @@
+{{ define "main" }}
+  <section id="hero" class="hero hero--course">
+    <div class="hero__grid hero__grid--course">
+      <div>
+        <p class="hero__badge">{{ .Site.Params.heroBadge }}</p>
+        <h1 class="hero__title">{{ .Site.Params.heroTitle }}</h1>
+        <p class="hero__subtitle">{{ .Site.Params.heroSubtitle }}</p>
+        {{ with .Site.Params.student }}
+          <ul class="student-meta">
+            <li><span>Họ tên</span>{{ .name }}</li>
+            <li><span>MSSV</span>{{ .studentID }}</li>
+            <li><span>Lớp</span>{{ .class }}</li>
+            <li><span>Môn học</span>{{ .subject }}</li>
+          </ul>
+        {{ end }}
+        <div class="nav-actions hero-actions">
+          <a class="button button--primary" href="{{ "blog/" | relLangURL }}">{{ .Site.Params.ctaPrimary }}</a>
+          <a class="button button--ghost" href="{{ "course/" | relLangURL }}">{{ .Site.Params.ctaSecondary }}</a>
+        </div>
+      </div>
+      <div class="hero__media hero__media--photo">
+        <img src="{{ .Site.Params.aboutPhoto | relLangURL }}" alt="{{ .Site.Params.author }}">
+      </div>
+    </div>
+  </section>
+
+  <section class="section outline-section">
+    <div class="card">
+      <h2 class="section__heading">Outline môn học</h2>
+      <div class="outline-wrapper">
+        <ul class="outline-snippet">
+          {{ range first 4 (.Site.Params.courseOutline | default (slice)) }}
+            <li>
+              <span>Buổi {{ printf "%02d" .week }}</span>
+              <div>
+                <strong>{{ .title }}</strong>
+                {{ with index .topics 0 }}<p>{{ . }}</p>{{ end }}
+              </div>
+            </li>
+          {{ else }}
+            <li>Đang cập nhật syllabus...</li>
+          {{ end }}
+        </ul>
+        <a class="course-link" href="{{ "course/" | relLangURL }}">Xem toàn bộ syllabus →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section__heading">Chủ đề trọng tâm</h2>
+    <p class="section__lead">{{ .Site.Params.bio }}</p>
+    <div class="highlight-grid">
+      {{ range .Site.Params.blogHighlights }}
+        <article class="card highlight-card">
+          <h3>{{ .title }}</h3>
+          <p>{{ .summary }}</p>
+        </article>
+      {{ else }}
+        <p>Danh sách chủ đề đang cập nhật.</p>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section__heading">Kỹ năng & công cụ</h2>
+    <p class="section__lead">Các kỹ năng được sử dụng xuyên suốt bài lab Lập Trình Mạng.</p>
+    <div class="skills">
+      {{ range .Site.Params.skills }}
+        <article class="skill">
+          <div class="skill__meta">
+            <span>{{ .name }}</span>
+            <span>{{ .level }}%</span>
+          </div>
+          <div class="skill__bar"><span style="--percent: {{ printf "%d%%" .level }};"></span></div>
+          <p>{{ .description }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="section" id="latest-posts">
+    <h2 class="section__heading">Bài blog mới nhất</h2>
+    <p class="section__lead">Ghi chép lý thuyết và bài thực hành theo từng buổi.</p>
+    <div class="post-list">
+      {{ $posts := first 4 (sort (where .Site.RegularPages "Section" "blog") "Date" "desc") }}
+      {{ range $posts }}
+        {{ $img := .Params.featuredImage | default "images/network-placeholder.png" }}
+        {{ if not (strings.HasPrefix $img "http") }}
+          {{ $img = $img | relLangURL }}
+        {{ end }}
+        <article class="post-list__item card" data-post-card data-title="{{ .Title }}">
+          <div class="post-list__thumb">
+            <img src="{{ $img }}" alt="{{ .Title }}" loading="lazy" />
+          </div>
+          <div class="post-list__body">
+            <p class="post-list__meta">Buổi {{ .Params.session }} · {{ .Date.Format "02/01" }}</p>
+            <h3>{{ .Title }}</h3>
+            <p>{{ .Params.description | default (.Summary | plainify) }}</p>
+            <a class="button button--ghost" href="{{ .RelPermalink }}">Đọc bài →</a>
+          </div>
+        </article>
+      {{ else }}
+        <p>Chưa có bài viết nào.</p>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="section contact-section" id="contact">
+    <div class="card contact-card">
+      <span class="badge">Thông tin</span>
+      <h2 class="section__heading">Liên hệ để trao đổi bài lab</h2>
+      <p>{{ .Site.Params.availability }}</p>
+      <div class="contact-links">
+        {{ with .Site.Params.email }}<a class="button button--primary" href="{{ . }}">Gửi email</a>{{ end }}
+        {{ with .Site.Params.social.github }}<a class="button button--ghost" href="{{ . }}" target="_blank" rel="noopener">GitHub</a>{{ end }}
+      </div>
+      <a class="course-link" href="{{ "contact/" | relLangURL }}">Tới trang Contact →</a>
+    </div>
+  </section>
+{{ end }}

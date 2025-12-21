@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UDP on Blog Lập Trình Mạng</title>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/udp/</link>
+    <description>Recent content in UDP on Blog Lập Trình Mạng</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate>Mon, 23 Dec 2024 09:00:00 +0700</lastBuildDate>
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/udp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buổi 8 (23/12) – Multicast UDP &amp; Java RMI</title>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/</link>
+      <pubDate>Mon, 23 Dec 2024 09:00:00 +0700</pubDate>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Gửi thông báo tới nhiều client cùng nhóm multicast.&lt;/li&gt;&#xA;&lt;li&gt;Hiểu kiến trúc Java RMI và cách tạo interface dịch vụ.&lt;/li&gt;&#xA;&lt;li&gt;Tổng hợp toàn bộ kiến thức để chuẩn bị báo cáo cuối kỳ.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;MulticastSocket&lt;/code&gt; và quy trình join/leave group.&lt;/li&gt;&#xA;&lt;li&gt;Yêu cầu firewall khi dùng địa chỉ 224.0.0.0/4.&lt;/li&gt;&#xA;&lt;li&gt;Component của RMI: interface, implementation, registry, client.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Multicast phù hợp cho các thông báo không yêu cầu xác nhận từng client, ví dụ cập nhật trạng thái lớp học. Ngược lại, RMI giúp gọi hàm từ xa nhưng cần registry hoạt động ổn định. Trong báo cáo mình vẽ sơ đồ tổng hợp: client nhận thông báo multicast, đồng thời có thể gọi RMI để lấy danh sách bài lab.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Buổi 6 (09/12) – Lập trình socket UDP</title>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</link>
+      <pubDate>Mon, 09 Dec 2024 09:00:00 +0700</pubDate>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Tạo UDP server và client trao đổi datagram ngắn.&lt;/li&gt;&#xA;&lt;li&gt;Thiết lập timeout để không bị treo khi mất gói.&lt;/li&gt;&#xA;&lt;li&gt;Cài đặt cơ chế ACK đơn giản để đảm bảo nhận đủ thông điệp quan trọng.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;DatagramSocket&lt;/code&gt;, &lt;code&gt;DatagramPacket&lt;/code&gt; và cách tái sử dụng buffer.&lt;/li&gt;&#xA;&lt;li&gt;Chiến lược đặt kích thước gói và xử lý phân mảnh.&lt;/li&gt;&#xA;&lt;li&gt;Cơ chế định thời (timeout) và gửi lại khi không nhận được phản hồi.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Điểm khó nhất là không có kết nối cố định, nên mình phải tự quản lý trạng thái client thông qua địa chỉ/port gửi lên. Ngoài ra, việc đặt kích thước buffer hợp lý giúp tránh lãng phí băng thông. Trong báo cáo mình trình bày bảng thống kê tỷ lệ mất gói khi thử nghiệm với mạng Wi-Fi và cách tăng cường bằng việc gửi lại tối đa 3 lần.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Buổi 2 (18/11) – Kiến thức nền tảng</title>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</link>
+      <pubDate>Mon, 18 Nov 2024 09:00:00 +0700</pubDate>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ghi nhớ mối liên hệ giữa OSI 7 lớp và TCP/IP.&lt;/li&gt;&#xA;&lt;li&gt;Nhận biết khi nào nên chọn TCP hay UDP.&lt;/li&gt;&#xA;&lt;li&gt;Hiểu cấu trúc cơ bản của Socket API trong Java.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Layer Transport và nhiệm vụ đảm bảo tin cậy/không tin cậy.&lt;/li&gt;&#xA;&lt;li&gt;Định dạng tiêu đề TCP/UDP, ý nghĩa từng trường.&lt;/li&gt;&#xA;&lt;li&gt;Luồng xử lý khi gọi &lt;code&gt;new Socket()&lt;/code&gt; và &lt;code&gt;new ServerSocket()&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Giảng viên yêu cầu trình bày lại quá trình handshake của TCP và cách UDP gửi datagram độc lập. Mình rút ra rằng socket chỉ là điểm cuối của kết nối, còn logic truyền thông phụ thuộc vào cách đóng gói dữ liệu. Khi viết báo cáo, mình so sánh ưu/nhược từng giao thức và minh họa bằng trường hợp sử dụng thực tế như truyền file (TCP) hay gửi thông báo nhanh (UDP).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

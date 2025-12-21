@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TCP on Blog Lập Trình Mạng</title>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/tcp/</link>
+    <description>Recent content in TCP on Blog Lập Trình Mạng</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate>Mon, 02 Dec 2024 09:00:00 +0700</lastBuildDate>
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buổi 5 (02/12) – Lập trình sockets TCP</title>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</link>
+      <pubDate>Mon, 02 Dec 2024 09:00:00 +0700</pubDate>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Viết server TCP có khả năng phục vụ nhiều client tuần tự.&lt;/li&gt;&#xA;&lt;li&gt;Thiết kế giao thức dạng text gồm phần header và payload.&lt;/li&gt;&#xA;&lt;li&gt;Biết cách log kết nối để dễ debug.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Quy trình &lt;code&gt;ServerSocket.accept()&lt;/code&gt; và &lt;code&gt;Socket&lt;/code&gt; ở phía client.&lt;/li&gt;&#xA;&lt;li&gt;Phương pháp đóng kết nối an toàn sau khi hoàn thành phiên làm việc.&lt;/li&gt;&#xA;&lt;li&gt;Chiến lược xử lý nhiều client: tuần tự, đa luồng, thread pool.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Mình bắt đầu bằng server echo cơ bản sau đó bổ sung lớp xử lý message. Quan trọng nhất là quy ước format: &lt;code&gt;[COMMAND]|[DATA]&lt;/code&gt;. Nhờ format này, server có thể phân tách lệnh &lt;code&gt;PING&lt;/code&gt;, &lt;code&gt;TIME&lt;/code&gt;, &lt;code&gt;QUIT&lt;/code&gt;. Trong báo cáo mình vẽ sơ đồ sequence thể hiện handshake và luồng dữ liệu giữa client-server.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Buổi 2 (18/11) – Kiến thức nền tảng</title>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</link>
+      <pubDate>Mon, 18 Nov 2024 09:00:00 +0700</pubDate>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ghi nhớ mối liên hệ giữa OSI 7 lớp và TCP/IP.&lt;/li&gt;&#xA;&lt;li&gt;Nhận biết khi nào nên chọn TCP hay UDP.&lt;/li&gt;&#xA;&lt;li&gt;Hiểu cấu trúc cơ bản của Socket API trong Java.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Layer Transport và nhiệm vụ đảm bảo tin cậy/không tin cậy.&lt;/li&gt;&#xA;&lt;li&gt;Định dạng tiêu đề TCP/UDP, ý nghĩa từng trường.&lt;/li&gt;&#xA;&lt;li&gt;Luồng xử lý khi gọi &lt;code&gt;new Socket()&lt;/code&gt; và &lt;code&gt;new ServerSocket()&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Giảng viên yêu cầu trình bày lại quá trình handshake của TCP và cách UDP gửi datagram độc lập. Mình rút ra rằng socket chỉ là điểm cuối của kết nối, còn logic truyền thông phụ thuộc vào cách đóng gói dữ liệu. Khi viết báo cáo, mình so sánh ưu/nhược từng giao thức và minh họa bằng trường hợp sử dụng thực tế như truyền file (TCP) hay gửi thông báo nhanh (UDP).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

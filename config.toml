@@ -1,0 +1,171 @@
+baseURL = "https://TrungNguyenZzZ.github.io/Blog_Myself/"
+languageCode = "vi-vn"
+title = "Blog Lập Trình Mạng"
+theme = "ananke"
+publishDir = "docs"
+enableRobotsTXT = true
+
+[related]
+threshold = 80
+includeNewer = true
+toLower = true
+
+[[related.indices]]
+name = "tags"
+weight = 120
+
+[[related.indices]]
+name = "categories"
+weight = 80
+
+[params]
+author = "Nguyễn Tài Trung"
+role = "Sinh viên Công nghệ Thông tin"
+bio = "Blog ghi chép lý thuyết, bài lab và kinh nghiệm môn Lập Trình Mạng phục vụ việc học và báo cáo cuối kỳ."
+intro = "Tài liệu học tập môn Lập Trình Mạng"
+ctaPrimary = "Xem bài mới nhất"
+ctaSecondary = "Giới thiệu môn học"
+featuredCategories = ["TCP", "UDP", "Socket", "Multithreading"]
+email = "mailto:21120456@student.university.edu.vn"
+aboutPhoto = "images/avatar.jpg"
+location = "Đại học Công nghệ Thông tin"
+availability = "Sẵn sàng trao đổi, hướng dẫn lab và chia sẻ kinh nghiệm môn học."
+heroBadge = "Blog học tập · Lập Trình Mạng"
+heroTitle = "Blog Lập Trình Mạng"
+heroSubtitle = "Ghi chép kiến thức và bài thực hành môn Lập Trình Mạng cho sinh viên."
+contactCTA = "Liên hệ"
+courseNote = "Tài liệu phù hợp để giảng viên chấm điểm và deploy lên GitHub Pages."
+
+[params.student]
+name = "Nguyễn Tài Trung"
+studentID = "2280618942"
+class = "22DTHE6"
+subject = "Lập Trình Mạng"
+
+[[params.blogHighlights]]
+title = "TCP/UDP căn bản"
+summary = "Ôn lại mô hình OSI, vai trò của TCP/UDP và cách chọn giao thức phù hợp cho ứng dụng."
+
+[[params.blogHighlights]]
+title = "Socket API trên Java"
+summary = "Thực hành tạo server/client, quản lý kết nối và xử lý luồng dữ liệu."
+
+[[params.blogHighlights]]
+title = "Đồng thời và tối ưu"
+summary = "Ứng dụng thread pool, đồng bộ hóa và xử lý đa kết nối."
+
+[[params.courseOutline]]
+week = 1
+title = "Tổng quan khóa học"
+topics = ["Cam kết môn học", "Quy trình nộp lab", "Ôn lại mô hình mạng"]
+
+[[params.courseOutline]]
+week = 2
+title = "Kiến thức nền tảng"
+topics = ["Layer OSI/TCP-IP", "Socket API", "Luồng dữ liệu"]
+
+[[params.courseOutline]]
+week = 3
+title = "Quản lý luồng nhập xuất"
+topics = ["Stream trong Java", "Buffer", "Quản trị tài nguyên"]
+
+[[params.courseOutline]]
+week = 4
+title = "Địa chỉ kết nối mạng"
+topics = ["IP, Port, DNS", "InetAddress", "NetworkInterface"]
+
+[[params.courseOutline]]
+week = 5
+title = "Socket TCP"
+topics = ["ServerSocket", "Client xử lý tuần tự", "Thông điệp/Protocol"]
+
+[[params.courseOutline]]
+week = 6
+title = "Socket UDP"
+topics = ["DatagramPacket", "Xử lý mất gói", "Lab echo server"]
+
+[[params.courseOutline]]
+week = 7
+title = "Đa tuyến và đồng thời"
+topics = ["Thread, Executor", "Synchronized", "Phân rã tải"]
+
+[[params.courseOutline]]
+week = 8
+title = "Multicast & Java RMI"
+topics = ["Nhóm multicast", "Registry", "Triển khai dịch vụ RMI"]
+
+courseTechnologies = ["Socket", "TCP/UDP", "Client-Server", "Multithreading"]
+
+[[params.navLinks]]
+label = "Home"
+url = "/#hero"
+
+[[params.navLinks]]
+label = "Blog"
+url = "/blog/"
+
+[[params.navLinks]]
+label = "Course"
+url = "/course/"
+
+[[params.navLinks]]
+label = "About"
+url = "/about/"
+
+[[params.navLinks]]
+label = "Contact"
+url = "/contact/"
+
+[[params.skills]]
+name = "Socket Programming"
+level = 80
+description = "Tạo server/client, quản lý kết nối, xử lý protocol."
+
+[[params.skills]]
+name = "TCP/UDP"
+level = 75
+description = "Thiết kế gói tin, kiểm soát lỗi, xử lý mất gói."
+
+[[params.skills]]
+name = "Client-Server"
+level = 70
+description = "Xây dựng mô hình dịch vụ theo yêu cầu môn học."
+
+[[params.skills]]
+name = "Multithreading"
+level = 65
+description = "Triển khai thread pool, đồng bộ tài nguyên."
+
+[params.cv]
+title = "Curriculum Vitae"
+description = "Xem trực tiếp CV PDF hoặc tải bản mới nhất về máy của bạn."
+file = "files/NguyenTaiTrung-CV.pdf"
+previewImage = "images/cv-preview.png"
+viewerLabel = "Xem CV online"
+downloadLabel = "Tải CV PDF"
+
+[[params.certificates]]
+title = "Java Networking Basics"
+issuer = "Cisco NetAcad · 2025"
+file = "files/java1.pdf"
+image = "images/network-placeholder.png"
+
+[[params.certificates]]
+title = "Java Foundations Workshop"
+issuer = "UIT Lab · 2025"
+file = "files/javabasic.pdf"
+image = "images/network-placeholder.png"
+
+[params.seo]
+description = "Blog học tập môn Lập Trình Mạng: lý thuyết, bài lab và kinh nghiệm thực hành TCP/UDP, Socket, Multithreading."
+keywords = "Lập trình mạng, Socket, TCP, UDP, Multithreading, Blog sinh viên"
+
+[params.comments]
+provider = "disqus"
+shortname = ""  # Nhập shortname Disqus nếu bạn có
+
+[params.social]
+linkedin = "https://www.linkedin.com"
+github = "https://github.com/TrungNguyenZzZ"
+twitter = "https://twitter.com"
+facebook = "https://facebook.com"

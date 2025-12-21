@@ -1,0 +1,49 @@
+{{ define "main" }}
+  <section class="post-hero">
+    <span class="badge">Course</span>
+    <h1 class="section__heading">{{ .Title }}</h1>
+    <p class="section__lead">{{ .Params.description | default .Site.Params.courseNote }}</p>
+  </section>
+
+  <section class="section course-layout">
+    <article class="card">
+      <h2>Mục tiêu môn học</h2>
+      <ul class="objective-list">
+        {{ range .Params.objectives }}
+          <li>{{ . }}</li>
+        {{ else }}
+          <li>Đang cập nhật mục tiêu.</li>
+        {{ end }}
+      </ul>
+    </article>
+    <article class="card">
+      <h2>Công nghệ & kỹ thuật</h2>
+      <div class="project-stack">
+        {{ $techs := .Params.technologies | default .Site.Params.courseTechnologies }}
+        {{ range $techs }}
+          <span class="chip">{{ . }}</span>
+        {{ end }}
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2 class="section__heading">Course Outline (8 buổi)</h2>
+    <div class="outline-grid">
+      {{ range .Params.outline }}
+        <article class="card outline-card">
+          <span class="badge">Buổi {{ printf "%02d" .week }}</span>
+          <h3>{{ .title }}</h3>
+          <p><strong>Ngày học:</strong> {{ .date }}</p>
+          <ul>
+            {{ range .notes }}
+              <li>{{ . }}</li>
+            {{ end }}
+          </ul>
+        </article>
+      {{ else }}
+        <p>Chưa có thông tin outline.</p>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

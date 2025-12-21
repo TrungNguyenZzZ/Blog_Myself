@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IP on Blog Lập Trình Mạng</title>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/ip/</link>
+    <description>Recent content in IP on Blog Lập Trình Mạng</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate>Fri, 29 Nov 2024 09:00:00 +0700</lastBuildDate>
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/ip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buổi 4 (29/11) – Quản lý địa chỉ kết nối mạng</title>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-4-quan-ly-dia-chi-ket-noi/</link>
+      <pubDate>Fri, 29 Nov 2024 09:00:00 +0700</pubDate>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-4-quan-ly-dia-chi-ket-noi/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Tra cứu IP cục bộ, gateway và card mạng bằng Java.&lt;/li&gt;&#xA;&lt;li&gt;Hiểu cách hệ điều hành lựa chọn cổng nguồn khi mở socket.&lt;/li&gt;&#xA;&lt;li&gt;Nắm quy tắc đặt port cho dịch vụ sinh viên tự triển khai.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Lớp &lt;code&gt;InetAddress&lt;/code&gt;, &lt;code&gt;InetSocketAddress&lt;/code&gt; và &lt;code&gt;NetworkInterface&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;li&gt;Cách bind server vào một địa chỉ cụ thể thay vì 0.0.0.0.&lt;/li&gt;&#xA;&lt;li&gt;Ý nghĩa dải port well-known, registered và dynamic.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Giảng viên yêu cầu mỗi nhóm phải mô tả được server đang lắng nghe ở interface nào và vì sao. Mình thực hành liệt kê toàn bộ adapter và ghi lại trong báo cáo. Nhờ vậy, khi chạy trên máy ảo hoặc lab LAN, mình dễ dàng chỉ định đúng IP để client kết nối. Buổi học cũng nhấn mạnh việc kiểm tra xung đột port khi deploy nhiều dịch vụ.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,71 @@
+{{ define "main" }}
+  {{ $isBlog := eq .Section "blog" }}
+  <section class="post-hero">
+    {{ if $isBlog }}
+      <span class="badge">Buổi {{ .Params.session }}</span>
+    {{ else }}
+      <span class="badge">{{ delimit (.Params.categories | default (slice "Trang")) ", " }}</span>
+    {{ end }}
+    <h1 class="section__heading">{{ .Title }}</h1>
+    <p class="post-hero__meta">
+      {{ .Date.Format "02 Jan 2006" }}
+      {{ if $isBlog }} · {{ .ReadingTime }} phút đọc{{ end }}
+      {{ with .Params.tags }} · {{ len . }} tags{{ end }}
+    </p>
+  </section>
+
+  <section class="section">
+    {{ with .Params.featuredImage }}
+      {{ $img := . }}
+      {{ if not (strings.HasPrefix $img "http") }}
+        {{ $img = $img | relLangURL }}
+      {{ end }}
+      <img src="{{ $img }}" alt="{{ $.Title }}" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+    {{ end }}
+    <article class="post-content">
+      {{ if $isBlog }}
+        <div class="session-card">
+          <h3>Tóm tắt buổi {{ .Params.session }}</h3>
+          <ul>
+            <li><strong>Ngày học:</strong> {{ .Date.Format "02/01/2006" }}</li>
+            <li><strong>Tags:</strong> {{ delimit (.Params.tags | default (slice "Networking")) ", " }}</li>
+          </ul>
+        </div>
+      {{ end }}
+      {{ .Content }}
+    </article>
+
+    {{ with .Params.tags }}
+      <div class="project-stack">
+        {{ range . }}
+          <span class="chip">{{ . }}</span>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    <div class="comment-box" id="comments">
+      <h3>Thảo luận</h3>
+      {{ if and (eq .Site.Params.comments.provider "disqus") (ne .Site.Params.comments.shortname "") }}
+        <div id="disqus_thread"></div>
+      {{ else }}
+        <p>Bạn có thể bật hệ thống bình luận (Disqus/Giscus) bằng cách cấu hình trong <code>config.toml</code>.</p>
+      {{ end }}
+    </div>
+  </section>
+
+  {{ $related := first 3 (.Site.RegularPages.Related .) }}
+  {{ if gt (len $related) 0 }}
+    <section class="section">
+      <h2 class="section__heading">Bài viết liên quan</h2>
+      <div class="related-grid">
+        {{ range $related }}
+          <article class="card">
+            <h3>{{ .Title }}</h3>
+            <p>{{ .Params.description | default (.Summary | plainify) }}</p>
+            <a class="button button--ghost" href="{{ .RelPermalink }}">Đọc tiếp →</a>
+          </article>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

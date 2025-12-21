@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <section class="post-hero">
+    <span class="badge">Contact</span>
+    <h1 class="section__heading">{{ .Title }}</h1>
+    <p class="section__lead">{{ .Params.description | default "Thông tin liên hệ sinh viên." }}</p>
+  </section>
+
+  <section class="section">
+    <article class="card contact-card">
+      <h2>Liên hệ trực tiếp</h2>
+      <div class="contact-list">
+        {{ .Content }}
+      </div>
+      <p class="contact-note">{{ .Site.Params.availability }}</p>
+    </article>
+  </section>
+{{ end }}

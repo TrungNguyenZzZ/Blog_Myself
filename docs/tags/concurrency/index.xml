@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Concurrency on Blog Lập Trình Mạng</title>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/concurrency/</link>
+    <description>Recent content in Concurrency on Blog Lập Trình Mạng</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate>Mon, 16 Dec 2024 09:00:00 +0700</lastBuildDate>
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/concurrency/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời</title>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-7-da-tuyen-va-xu-ly-dong-thoi/</link>
+      <pubDate>Mon, 16 Dec 2024 09:00:00 +0700</pubDate>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-7-da-tuyen-va-xu-ly-dong-thoi/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Biết lựa chọn mô hình thread phù hợp (per-connection, thread-pool).&lt;/li&gt;&#xA;&lt;li&gt;Ngăn chặn race condition khi chia sẻ tài nguyên chung.&lt;/li&gt;&#xA;&lt;li&gt;Ghi nhận số lượng client đang kết nối theo thời gian thực.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;ExecutorService&lt;/code&gt; và pattern submit task cho từng client.&lt;/li&gt;&#xA;&lt;li&gt;Sử dụng &lt;code&gt;ConcurrentHashMap&lt;/code&gt; để lưu trạng thái kết nối.&lt;/li&gt;&#xA;&lt;li&gt;Kết hợp synchronized/lock để bảo vệ tài nguyên quan trọng.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Mình refactor bài TCP trước đó để tận dụng &lt;code&gt;Executors.newFixedThreadPool(8)&lt;/code&gt;. Nhờ vậy server không tạo quá nhiều thread dẫn đến cạn kiệt tài nguyên. Ngoài ra, mình thêm bộ đếm &lt;code&gt;AtomicInteger&lt;/code&gt; để biết hiện có bao nhiêu client online. Báo cáo cũng so sánh thời gian phản hồi giữa mô hình tuần tự và thread-pool.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Protocol on Blog Lập Trình Mạng</title>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/protocol/</link>
+    <description>Recent content in Protocol on Blog Lập Trình Mạng</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate>Mon, 02 Dec 2024 09:00:00 +0700</lastBuildDate>
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/protocol/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buổi 5 (02/12) – Lập trình sockets TCP</title>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</link>
+      <pubDate>Mon, 02 Dec 2024 09:00:00 +0700</pubDate>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Viết server TCP có khả năng phục vụ nhiều client tuần tự.&lt;/li&gt;&#xA;&lt;li&gt;Thiết kế giao thức dạng text gồm phần header và payload.&lt;/li&gt;&#xA;&lt;li&gt;Biết cách log kết nối để dễ debug.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Quy trình &lt;code&gt;ServerSocket.accept()&lt;/code&gt; và &lt;code&gt;Socket&lt;/code&gt; ở phía client.&lt;/li&gt;&#xA;&lt;li&gt;Phương pháp đóng kết nối an toàn sau khi hoàn thành phiên làm việc.&lt;/li&gt;&#xA;&lt;li&gt;Chiến lược xử lý nhiều client: tuần tự, đa luồng, thread pool.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Mình bắt đầu bằng server echo cơ bản sau đó bổ sung lớp xử lý message. Quan trọng nhất là quy ước format: &lt;code&gt;[COMMAND]|[DATA]&lt;/code&gt;. Nhờ format này, server có thể phân tách lệnh &lt;code&gt;PING&lt;/code&gt;, &lt;code&gt;TIME&lt;/code&gt;, &lt;code&gt;QUIT&lt;/code&gt;. Trong báo cáo mình vẽ sơ đồ sequence thể hiện handshake và luồng dữ liệu giữa client-server.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

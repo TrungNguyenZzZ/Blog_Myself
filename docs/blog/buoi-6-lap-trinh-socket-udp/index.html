@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buổi 6 (09/12) – Lập trình socket UDP | Blog Lập Trình Mạng</title>
+    
+    <meta name="description" content="Triển khai DatagramSocket, xử lý timeout và bổ sung ACK thủ công." />
+    
+      
+      
+        <meta name="keywords" content="Lập trình mạng, Socket, TCP, UDP, Multithreading, Blog sinh viên">
+      
+    
+    <meta name="theme-color" content="#3b82f6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/Blog_Myself/css/custom.min.9909af19f064160acca69d28103cdb7ce4c9eeea644a98c15e73f4d985199a88.css" integrity="sha256-mQmvGfBkFgrMpp0oEDzbfOTJ7upkSpjBXnP02YUZmog=" />
+    
+  </head>
+  <body data-theme="light">
+    <div class="site-wrapper">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+            <span>Blog Lập Trình Mạng</span>
+          </a>
+          <nav>
+            <button class="nav-toggle" aria-label="Mở menu" data-nav-toggle>☰</button>
+            
+            <div class="nav-links">
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                
+              
+            </div>
+          </nav>
+          <div class="nav-actions">
+            <button class="theme-switch" aria-label="Toggle theme" data-theme-toggle>🌙</button>
+            
+              <a class="button button--primary" href="/Blog_Myself/contact/">Liên hệ</a>
+            
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        
+  
+  <section class="post-hero">
+    
+      <span class="badge">Buổi 6</span>
+    
+    <h1 class="section__heading">Buổi 6 (09/12) – Lập trình socket UDP</h1>
+    <p class="post-hero__meta">
+      09 Dec 2024
+       · 2 phút đọc
+       · 3 tags
+    </p>
+  </section>
+
+  <section class="section">
+    
+      
+      
+        
+      
+      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 6 (09/12) – Lập trình socket UDP" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+    
+    <article class="post-content">
+      
+        <div class="session-card">
+          <h3>Tóm tắt buổi 6</h3>
+          <ul>
+            <li><strong>Ngày học:</strong> 09/12/2024</li>
+            <li><strong>Tags:</strong> UDP, Datagram, Timeout</li>
+          </ul>
+        </div>
+      
+      <h2 id="mục-tiêu-buổi-học">Mục tiêu buổi học</h2>
+<ul>
+<li>Tạo UDP server và client trao đổi datagram ngắn.</li>
+<li>Thiết lập timeout để không bị treo khi mất gói.</li>
+<li>Cài đặt cơ chế ACK đơn giản để đảm bảo nhận đủ thông điệp quan trọng.</li>
+</ul>
+<h2 id="kiến-thức-chính">Kiến thức chính</h2>
+<ol>
+<li><code>DatagramSocket</code>, <code>DatagramPacket</code> và cách tái sử dụng buffer.</li>
+<li>Chiến lược đặt kích thước gói và xử lý phân mảnh.</li>
+<li>Cơ chế định thời (timeout) và gửi lại khi không nhận được phản hồi.</li>
+</ol>
+<h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
+<p>Điểm khó nhất là không có kết nối cố định, nên mình phải tự quản lý trạng thái client thông qua địa chỉ/port gửi lên. Ngoài ra, việc đặt kích thước buffer hợp lý giúp tránh lãng phí băng thông. Trong báo cáo mình trình bày bảng thống kê tỷ lệ mất gói khi thử nghiệm với mạng Wi-Fi và cách tăng cường bằng việc gửi lại tối đa 3 lần.</p>
+<h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">DatagramSocket</span>(10002)) {
+</span></span><span style="display:flex;"><span>  socket.<span style="color:#a6e22e">setSoTimeout</span>(3000);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> packet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">DatagramPacket</span>(buffer, buffer.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>    socket.<span style="color:#a6e22e">receive</span>(packet);
+</span></span><span style="display:flex;"><span>    String message <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(packet.<span style="color:#a6e22e">getData</span>(), 0, packet.<span style="color:#a6e22e">getLength</span>());
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> reply <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;ACK:&#34;</span> <span style="color:#f92672">+</span> message).<span style="color:#a6e22e">getBytes</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> response <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">DatagramPacket</span>(
+</span></span><span style="display:flex;"><span>        reply, reply.<span style="color:#a6e22e">length</span>, packet.<span style="color:#a6e22e">getAddress</span>(), packet.<span style="color:#a6e22e">getPort</span>());
+</span></span><span style="display:flex;"><span>    socket.<span style="color:#a6e22e">send</span>(response);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Server phản hồi lại chuỗi ACK giúp client biết gói đã đến.</p>
+<h2 id="tổng-kết">Tổng kết</h2>
+<ul>
+<li>Với UDP cần tự định nghĩa cơ chế tin cậy phù hợp với bài toán.</li>
+<li>Nên log lại thời gian round-trip để dễ phân tích hiệu năng.</li>
+<li>Buổi sau sẽ ghép kiến thức đa luồng để cải thiện throughput.</li>
+</ul>
+
+    </article>
+
+    
+      <div class="project-stack">
+        
+          <span class="chip">UDP</span>
+        
+          <span class="chip">Datagram</span>
+        
+          <span class="chip">Timeout</span>
+        
+      </div>
+    
+
+    <div class="comment-box" id="comments">
+      <h3>Thảo luận</h3>
+      
+        <p>Bạn có thể bật hệ thống bình luận (Disqus/Giscus) bằng cách cấu hình trong <code>config.toml</code>.</p>
+      
+    </div>
+  </section>
+
+  
+  
+    <section class="section">
+      <h2 class="section__heading">Bài viết liên quan</h2>
+      <div class="related-grid">
+        
+          <article class="card">
+            <h3>Buổi 8 (23/12) – Multicast UDP &amp; Java RMI</h3>
+            <p>Kết hợp MulticastSocket cho thông báo nhóm và triển khai dịch vụ Java RMI đơn giản.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/">Đọc tiếp →</a>
+          </article>
+        
+          <article class="card">
+            <h3>Buổi 2 (18/11) – Kiến thức nền tảng</h3>
+            <p>Ôn lại mô hình OSI/TCP-IP, phân biệt TCP và UDP, giới thiệu Socket API.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/">Đọc tiếp →</a>
+          </article>
+        
+      </div>
+    </section>
+  
+
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div>
+              <h3>Blog Lập Trình Mạng</h3>
+              <p>Blog ghi chép lý thuyết, bài lab và kinh nghiệm môn Lập Trình Mạng phục vụ việc học và báo cáo cuối kỳ.</p>
+            </div>
+            <div>
+              <h4>Kết nối</h4>
+              <div class="footer__links">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+              </div>
+            </div>
+            <div class="contact-card" id="contact">
+              <h4>Liên hệ</h4>
+              <a href="mailto:21120456@student.university.edu.vn">Email</a>
+              <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub Projects</a>
+            </div>
+          </div>
+          <p class="footer__copy">© 2025 Nguyễn Tài Trung · All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    
+    <script src="/Blog_Myself/js/app.min.04f121891eebbd5357d564f597596f68ec2f8a77f09481916b76729e968ce3fb.js" integrity="sha256-BPEhiR7rvVNX1WT1l1lvaOwvinfwlIGRa3ZynpaM4/s=" defer></script>
+    
+    
+  </body>
+</html>

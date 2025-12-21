@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Buổi 1 (11/11) – Tổng quan khóa học | Blog Lập Trình Mạng</title>
+    
+    <meta name="description" content="Giới thiệu yêu cầu môn học, cấu trúc lab và các công cụ cần chuẩn bị." />
+    
+      
+      
+        <meta name="keywords" content="Lập trình mạng, Socket, TCP, UDP, Multithreading, Blog sinh viên">
+      
+    
+    <meta name="theme-color" content="#3b82f6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600&display=swap" rel="stylesheet" />
+    
+    <link rel="stylesheet" href="/Blog_Myself/css/custom.min.9909af19f064160acca69d28103cdb7ce4c9eeea644a98c15e73f4d985199a88.css" integrity="sha256-mQmvGfBkFgrMpp0oEDzbfOTJ7upkSpjBXnP02YUZmog=" />
+    
+  </head>
+  <body data-theme="light">
+    <div class="site-wrapper">
+      <header class="site-header">
+        <div class="container site-header__inner">
+          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+            <span>Blog Lập Trình Mạng</span>
+          </a>
+          <nav>
+            <button class="nav-toggle" aria-label="Mở menu" data-nav-toggle>☰</button>
+            
+            <div class="nav-links">
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                
+              
+                
+                
+                  
+                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                
+              
+            </div>
+          </nav>
+          <div class="nav-actions">
+            <button class="theme-switch" aria-label="Toggle theme" data-theme-toggle>🌙</button>
+            
+              <a class="button button--primary" href="/Blog_Myself/contact/">Liên hệ</a>
+            
+          </div>
+        </div>
+      </header>
+
+      <main class="container">
+        
+  
+  <section class="post-hero">
+    
+      <span class="badge">Buổi 1</span>
+    
+    <h1 class="section__heading">Buổi 1 (11/11) – Tổng quan khóa học</h1>
+    <p class="post-hero__meta">
+      11 Nov 2024
+       · 2 phút đọc
+       · 2 tags
+    </p>
+  </section>
+
+  <section class="section">
+    
+      
+      
+        
+      
+      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 1 (11/11) – Tổng quan khóa học" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+    
+    <article class="post-content">
+      
+        <div class="session-card">
+          <h3>Tóm tắt buổi 1</h3>
+          <ul>
+            <li><strong>Ngày học:</strong> 11/11/2024</li>
+            <li><strong>Tags:</strong> Overview, Quy trình học</li>
+          </ul>
+        </div>
+      
+      <h2 id="mục-tiêu-buổi-học">Mục tiêu buổi học</h2>
+<ul>
+<li>Hiểu kỳ vọng của giảng viên về báo cáo và minh chứng lab.</li>
+<li>Cài đặt đầy đủ JDK, IDE và công cụ kiểm tra mạng.</li>
+<li>Phác họa các chủ đề chính sẽ học trong 8 tuần tới.</li>
+</ul>
+<h2 id="kiến-thức-chính">Kiến thức chính</h2>
+<ol>
+<li>Tóm tắt mô hình TCP/IP và vai trò của từng tầng.</li>
+<li>Lộ trình bài lab: từ Socket cơ bản tới Multicast &amp; RMI.</li>
+<li>Nguyên tắc viết báo cáo: trình bày lý thuyết, sơ đồ, mã nguồn và kết quả kiểm thử.</li>
+</ol>
+<h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
+<p>Mình ghi chú lại cách giảng viên đánh giá: mỗi lab cần có mục tiêu, sơ đồ trao đổi gói tin và kiểm chứng kết quả bằng hình ảnh/ghi log. Việc nắm rõ tiêu chí ngay từ buổi đầu giúp tiết kiệm thời gian sửa bài. Ngoài ra, buổi này cũng nhấn mạnh mối liên hệ giữa mô hình TCP/IP với Socket API trên Java, vì vậy mình ôn lại từng layer và ví dụ loại ứng dụng phù hợp.</p>
+<h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
+<p>Để chắc chắn môi trường chạy ổn, mình viết chương trình kiểm tra phiên bản Java và hostname:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloNetwork</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Java version: &#34;</span> <span style="color:#f92672">+</span> System.<span style="color:#a6e22e">getProperty</span>(<span style="color:#e6db74">&#34;java.version&#34;</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> localhost <span style="color:#f92672">=</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">InetAddress</span>.<span style="color:#a6e22e">getLocalHost</span>();
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Hostname: &#34;</span> <span style="color:#f92672">+</span> localhost.<span style="color:#a6e22e">getHostName</span>());
+</span></span><span style="display:flex;"><span>    System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;IP: &#34;</span> <span style="color:#f92672">+</span> localhost.<span style="color:#a6e22e">getHostAddress</span>());
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Chạy chương trình giúp xác nhận máy ảo Java hoạt động và có thể truy cập API mạng.</p>
+<h2 id="tổng-kết">Tổng kết</h2>
+<ul>
+<li>Về nhà đọc syllabus để nắm rõ cách tính điểm.</li>
+<li>Chuẩn hóa môi trường phát triển và tạo repo GitHub ngay từ đầu.</li>
+<li>Sẵn sàng cho buổi 2 với phần ôn lý thuyết căn bản.</li>
+</ul>
+
+    </article>
+
+    
+      <div class="project-stack">
+        
+          <span class="chip">Overview</span>
+        
+          <span class="chip">Quy trình học</span>
+        
+      </div>
+    
+
+    <div class="comment-box" id="comments">
+      <h3>Thảo luận</h3>
+      
+        <p>Bạn có thể bật hệ thống bình luận (Disqus/Giscus) bằng cách cấu hình trong <code>config.toml</code>.</p>
+      
+    </div>
+  </section>
+
+  
+  
+
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__grid">
+            <div>
+              <h3>Blog Lập Trình Mạng</h3>
+              <p>Blog ghi chép lý thuyết, bài lab và kinh nghiệm môn Lập Trình Mạng phục vụ việc học và báo cáo cuối kỳ.</p>
+            </div>
+            <div>
+              <h4>Kết nối</h4>
+              <div class="footer__links">
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+                <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+              </div>
+            </div>
+            <div class="contact-card" id="contact">
+              <h4>Liên hệ</h4>
+              <a href="mailto:21120456@student.university.edu.vn">Email</a>
+              <a href="https://github.com/TrungNguyenZzZ" target="_blank" rel="noopener">GitHub Projects</a>
+            </div>
+          </div>
+          <p class="footer__copy">© 2025 Nguyễn Tài Trung · All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+    
+    <script src="/Blog_Myself/js/app.min.04f121891eebbd5357d564f597596f68ec2f8a77f09481916b76729e968ce3fb.js" integrity="sha256-BPEhiR7rvVNX1WT1l1lvaOwvinfwlIGRa3ZynpaM4/s=" defer></script>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{{ define "main" }}
+  <section class="post-hero">
+    <span class="badge">Danh mục</span>
+    <h1 class="section__heading">{{ .Title }}</h1>
+    <p class="section__lead">Các bài viết thuộc chủ đề {{ lower .Title }}.</p>
+  </section>
+
+  <section class="section">
+    <div class="timeline">
+      {{ range .Pages }}
+        {{ $img := .Params.featuredImage | default "images/network-placeholder.png" }}
+        {{ if not (strings.HasPrefix $img "http") }}
+          {{ $img = $img | relLangURL }}
+        {{ end }}
+        <article class="timeline__item card" data-post-card data-title="{{ .Title }}">
+          <div class="timeline__dot"></div>
+          <div class="timeline__body">
+            <p class="timeline__meta">{{ .Date.Format "02/01" }}</p>
+            <h2 class="blog-card__title">{{ .Title }}</h2>
+            <p class="card__excerpt">{{ .Params.description | default (.Summary | plainify) }}</p>
+            <a class="button button--ghost" href="{{ .RelPermalink }}">Đọc bài →</a>
+          </div>
+        </article>
+      {{ else }}
+        <p>Danh mục chưa có bài viết.</p>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

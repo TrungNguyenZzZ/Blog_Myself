@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Timeout on Blog Lập Trình Mạng</title>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/timeout/</link>
+    <description>Recent content in Timeout on Blog Lập Trình Mạng</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate>Mon, 09 Dec 2024 09:00:00 +0700</lastBuildDate>
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/timeout/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Buổi 6 (09/12) – Lập trình socket UDP</title>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</link>
+      <pubDate>Mon, 09 Dec 2024 09:00:00 +0700</pubDate>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Tạo UDP server và client trao đổi datagram ngắn.&lt;/li&gt;&#xA;&lt;li&gt;Thiết lập timeout để không bị treo khi mất gói.&lt;/li&gt;&#xA;&lt;li&gt;Cài đặt cơ chế ACK đơn giản để đảm bảo nhận đủ thông điệp quan trọng.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;DatagramSocket&lt;/code&gt;, &lt;code&gt;DatagramPacket&lt;/code&gt; và cách tái sử dụng buffer.&lt;/li&gt;&#xA;&lt;li&gt;Chiến lược đặt kích thước gói và xử lý phân mảnh.&lt;/li&gt;&#xA;&lt;li&gt;Cơ chế định thời (timeout) và gửi lại khi không nhận được phản hồi.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Điểm khó nhất là không có kết nối cố định, nên mình phải tự quản lý trạng thái client thông qua địa chỉ/port gửi lên. Ngoài ra, việc đặt kích thước buffer hợp lý giúp tránh lãng phí băng thông. Trong báo cáo mình trình bày bảng thống kê tỷ lệ mất gói khi thử nghiệm với mạng Wi-Fi và cách tăng cường bằng việc gửi lại tối đa 3 lần.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
