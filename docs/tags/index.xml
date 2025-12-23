@@ -2,157 +2,157 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Blog Lập Trình Mạng</title>
-    <link>http://localhost:1313/Blog_Myself/tags/</link>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/</link>
     <description>Recent content in Tags on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 30 Dec 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/Blog_Myself/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Networking</title>
-      <link>http://localhost:1313/Blog_Myself/tags/networking/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/networking/</link>
       <pubDate>Mon, 30 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/networking/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/networking/</guid>
       <description></description>
     </item>
     <item>
       <title>Socket</title>
-      <link>http://localhost:1313/Blog_Myself/tags/socket/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/socket/</link>
       <pubDate>Mon, 30 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/socket/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/socket/</guid>
       <description></description>
     </item>
     <item>
       <title>Tổng Kết</title>
-      <link>http://localhost:1313/Blog_Myself/tags/t%E1%BB%95ng-k%E1%BA%BFt/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/t%E1%BB%95ng-k%E1%BA%BFt/</link>
       <pubDate>Mon, 30 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/t%E1%BB%95ng-k%E1%BA%BFt/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/t%E1%BB%95ng-k%E1%BA%BFt/</guid>
       <description></description>
     </item>
     <item>
       <title>Multicast</title>
-      <link>http://localhost:1313/Blog_Myself/tags/multicast/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/multicast/</link>
       <pubDate>Mon, 23 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/multicast/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/multicast/</guid>
       <description></description>
     </item>
     <item>
       <title>RMI</title>
-      <link>http://localhost:1313/Blog_Myself/tags/rmi/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/rmi/</link>
       <pubDate>Mon, 23 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/rmi/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/rmi/</guid>
       <description></description>
     </item>
     <item>
       <title>UDP</title>
-      <link>http://localhost:1313/Blog_Myself/tags/udp/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/udp/</link>
       <pubDate>Mon, 23 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/udp/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/udp/</guid>
       <description></description>
     </item>
     <item>
       <title>Concurrency</title>
-      <link>http://localhost:1313/Blog_Myself/tags/concurrency/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/concurrency/</link>
       <pubDate>Mon, 16 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/concurrency/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/concurrency/</guid>
       <description></description>
     </item>
     <item>
       <title>Executor</title>
-      <link>http://localhost:1313/Blog_Myself/tags/executor/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/executor/</link>
       <pubDate>Mon, 16 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/executor/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/executor/</guid>
       <description></description>
     </item>
     <item>
       <title>Threads</title>
-      <link>http://localhost:1313/Blog_Myself/tags/threads/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/threads/</link>
       <pubDate>Mon, 16 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/threads/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/threads/</guid>
       <description></description>
     </item>
     <item>
       <title>Datagram</title>
-      <link>http://localhost:1313/Blog_Myself/tags/datagram/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/datagram/</link>
       <pubDate>Mon, 09 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/datagram/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/datagram/</guid>
       <description></description>
     </item>
     <item>
       <title>Timeout</title>
-      <link>http://localhost:1313/Blog_Myself/tags/timeout/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/timeout/</link>
       <pubDate>Mon, 09 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/timeout/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/timeout/</guid>
       <description></description>
     </item>
     <item>
       <title>Protocol</title>
-      <link>http://localhost:1313/Blog_Myself/tags/protocol/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/protocol/</link>
       <pubDate>Mon, 02 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/protocol/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/protocol/</guid>
       <description></description>
     </item>
     <item>
       <title>ServerSocket</title>
-      <link>http://localhost:1313/Blog_Myself/tags/serversocket/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/serversocket/</link>
       <pubDate>Mon, 02 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/serversocket/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/serversocket/</guid>
       <description></description>
     </item>
     <item>
       <title>TCP</title>
-      <link>http://localhost:1313/Blog_Myself/tags/tcp/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/tcp/</link>
       <pubDate>Mon, 02 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/tcp/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/tcp/</guid>
       <description></description>
     </item>
     <item>
       <title>InetAddress</title>
-      <link>http://localhost:1313/Blog_Myself/tags/inetaddress/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/inetaddress/</link>
       <pubDate>Fri, 29 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/inetaddress/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/inetaddress/</guid>
       <description></description>
     </item>
     <item>
       <title>IP</title>
-      <link>http://localhost:1313/Blog_Myself/tags/ip/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/ip/</link>
       <pubDate>Fri, 29 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/ip/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/ip/</guid>
       <description></description>
     </item>
     <item>
       <title>Port</title>
-      <link>http://localhost:1313/Blog_Myself/tags/port/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/port/</link>
       <pubDate>Fri, 29 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/port/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/port/</guid>
       <description></description>
     </item>
     <item>
       <title>Buffer</title>
-      <link>http://localhost:1313/Blog_Myself/tags/buffer/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/buffer/</link>
       <pubDate>Mon, 25 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/buffer/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/buffer/</guid>
       <description></description>
     </item>
     <item>
       <title>IO</title>
-      <link>http://localhost:1313/Blog_Myself/tags/io/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/io/</link>
       <pubDate>Mon, 25 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/io/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/io/</guid>
       <description></description>
     </item>
     <item>
       <title>Overview</title>
-      <link>http://localhost:1313/Blog_Myself/tags/overview/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/overview/</link>
       <pubDate>Mon, 11 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/overview/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/overview/</guid>
       <description></description>
     </item>
     <item>
       <title>Quy Trình Học</title>
-      <link>http://localhost:1313/Blog_Myself/tags/quy-tr%C3%ACnh-h%E1%BB%8Dc/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/quy-tr%C3%ACnh-h%E1%BB%8Dc/</link>
       <pubDate>Mon, 11 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/tags/quy-tr%C3%ACnh-h%E1%BB%8Dc/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/quy-tr%C3%ACnh-h%E1%BB%8Dc/</guid>
       <description></description>
     </item>
   </channel>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Timeout on Blog Lập Trình Mạng</title>
-    <link>http://localhost:1313/Blog_Myself/tags/timeout/</link>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/timeout/</link>
     <description>Recent content in Timeout on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 09 Dec 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/Blog_Myself/tags/timeout/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/timeout/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi 6 (09/12) – Lập trình socket UDP</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</link>
       <pubDate>Mon, 09 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Tạo UDP server và client trao đổi datagram ngắn.&lt;/li&gt;&#xA;&lt;li&gt;Thiết lập timeout để không bị treo khi mất gói.&lt;/li&gt;&#xA;&lt;li&gt;Cài đặt cơ chế ACK/Retry đơn giản cho thông điệp quan trọng.&lt;/li&gt;&#xA;&lt;li&gt;Quản lý kích thước gói để tránh phân mảnh.&lt;/li&gt;&#xA;&lt;li&gt;Đánh giá ưu/nhược của UDP so với TCP trong bài lab.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;DatagramSocket&lt;/code&gt;, &lt;code&gt;DatagramPacket&lt;/code&gt; và cách tái sử dụng buffer.&lt;/li&gt;&#xA;&lt;li&gt;UDP giữ nguyên ranh giới message (message boundary) nhưng không đảm bảo thứ tự.&lt;/li&gt;&#xA;&lt;li&gt;Kích thước gói an toàn ~1400 bytes để tránh phân mảnh trong mạng LAN.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;setSoTimeout()&lt;/code&gt; và cơ chế gửi lại khi không nhận được ACK.&lt;/li&gt;&#xA;&lt;li&gt;Cách nhận biết client bằng cặp địa chỉ IP + port.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Điểm khó nhất là UDP không có kết nối cố định, nên server phải tự quản lý trạng thái dựa trên IP/port gửi đến. Nếu client đổi port, server coi như một phiên mới. Ngoài ra, gói tin có thể mất hoặc đến trễ, vì vậy cần có số thứ tự (sequence) và ACK để đảm bảo dữ liệu quan trọng.&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>TCP on Blog Lập Trình Mạng</title>
-    <link>http://localhost:1313/Blog_Myself/tags/tcp/</link>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/tcp/</link>
     <description>Recent content in TCP on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 02 Dec 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/Blog_Myself/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/tcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi 5 (02/12) – Lập trình sockets TCP</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</link>
       <pubDate>Mon, 02 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Viết server TCP có khả năng phục vụ nhiều client tuần tự hoặc song song.&lt;/li&gt;&#xA;&lt;li&gt;Thiết kế giao thức dạng text gồm phần lệnh và dữ liệu.&lt;/li&gt;&#xA;&lt;li&gt;Quản lý vòng đời kết nối: mở, xử lý, đóng an toàn.&lt;/li&gt;&#xA;&lt;li&gt;Ghi log kết nối để dễ debug và báo cáo.&lt;/li&gt;&#xA;&lt;li&gt;Nhận biết các lỗi phổ biến: treo kết nối, timeout, client ngắt giữa chừng.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Quy trình &lt;code&gt;ServerSocket.accept()&lt;/code&gt; và &lt;code&gt;Socket&lt;/code&gt; phía client.&lt;/li&gt;&#xA;&lt;li&gt;TCP là stream nên cần quy ước tách message (newline hoặc length-prefix).&lt;/li&gt;&#xA;&lt;li&gt;Đóng kết nối đúng thứ tự để tránh rò rỉ tài nguyên.&lt;/li&gt;&#xA;&lt;li&gt;Chiến lược xử lý nhiều client: tuần tự, đa luồng, thread pool.&lt;/li&gt;&#xA;&lt;li&gt;Thiết lập timeout bằng &lt;code&gt;setSoTimeout()&lt;/code&gt; để tránh treo vô hạn.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Mình bắt đầu bằng server echo cơ bản, sau đó chuyển sang giao thức text: &lt;code&gt;COMMAND|DATA&lt;/code&gt;. Quy ước này giúp server phân tách lệnh rõ ràng, ví dụ &lt;code&gt;PING&lt;/code&gt;, &lt;code&gt;TIME&lt;/code&gt;, &lt;code&gt;QUIT&lt;/code&gt;. Khi chưa có quy ước, client gửi chuỗi bất kỳ khiến server khó xử lý và dễ lỗi.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Buổi 2 (18/11) – Kiến thức nền tảng</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</link>
       <pubDate>Mon, 18 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ghi nhớ mối liên hệ giữa OSI 7 lớp và TCP/IP 4 lớp để định vị lỗi nhanh.&lt;/li&gt;&#xA;&lt;li&gt;Nhận biết khi nào nên chọn TCP hay UDP dựa trên độ tin cậy và độ trễ.&lt;/li&gt;&#xA;&lt;li&gt;Hiểu vai trò của IP, port và socket trong một kết nối mạng.&lt;/li&gt;&#xA;&lt;li&gt;Nắm quy trình bắt tay TCP và cơ chế đóng kết nối an toàn.&lt;/li&gt;&#xA;&lt;li&gt;Biết các tham số cơ bản khi khởi tạo socket (timeout, backlog, buffer).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Ánh xạ tầng OSI sang TCP/IP: Application ↔ (Application), Transport ↔ (TCP/UDP), Internet ↔ (IP), Link ↔ (Ethernet/Wi-Fi).&lt;/li&gt;&#xA;&lt;li&gt;TCP header và ý nghĩa các trường: Source/Dest port, Sequence, ACK, Window, Flags (SYN/ACK/FIN).&lt;/li&gt;&#xA;&lt;li&gt;UDP header tối giản (Source/Dest port, Length, Checksum) và đặc tính không đảm bảo.&lt;/li&gt;&#xA;&lt;li&gt;Vòng đời kết nối TCP: DNS → connect → 3-way handshake → truyền dữ liệu → FIN/ACK → TIME_WAIT.&lt;/li&gt;&#xA;&lt;li&gt;Công cụ quan sát kết nối: &lt;code&gt;netstat&lt;/code&gt;/&lt;code&gt;ss&lt;/code&gt; để xem trạng thái port, Wireshark để bắt gói.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Khi ghép OSI với TCP/IP, mình dễ dàng xác định lớp nào đang gặp vấn đề. Ví dụ lỗi ở tầng Application thường xuất hiện dưới dạng sai định dạng dữ liệu, còn lỗi ở tầng Transport liên quan đến timeout hoặc mất gói. Cách suy nghĩ theo lớp giúp mình viết báo cáo có cấu trúc hơn và giải thích được nguyên nhân.&lt;/p&gt;</description>
     </item>
   </channel>

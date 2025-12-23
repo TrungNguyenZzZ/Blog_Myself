@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IO on Blog Lập Trình Mạng</title>
-    <link>http://localhost:1313/Blog_Myself/tags/io/</link>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/io/</link>
     <description>Recent content in IO on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 25 Nov 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/Blog_Myself/tags/io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi 3 (25/11) – Quản lý các luồng nhập xuất</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-3-quan-ly-luong-nhap-xuat/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-3-quan-ly-luong-nhap-xuat/</link>
       <pubDate>Mon, 25 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-3-quan-ly-luong-nhap-xuat/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-3-quan-ly-luong-nhap-xuat/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Phân biệt stream nhị phân và stream ký tự trong Java.&lt;/li&gt;&#xA;&lt;li&gt;Hiểu cách bọc buffer để tăng hiệu năng đọc/ghi socket.&lt;/li&gt;&#xA;&lt;li&gt;Chuẩn hóa định dạng thông điệp để tránh dính gói/đứt gói.&lt;/li&gt;&#xA;&lt;li&gt;Biết sử dụng &lt;code&gt;try-with-resources&lt;/code&gt; và &lt;code&gt;flush()&lt;/code&gt; đúng thời điểm.&lt;/li&gt;&#xA;&lt;li&gt;Kiểm soát encoding (UTF-8) để tránh lỗi ký tự khi truyền dữ liệu.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;InputStream&lt;/code&gt;/&lt;code&gt;OutputStream&lt;/code&gt; làm việc với byte, &lt;code&gt;Reader&lt;/code&gt;/&lt;code&gt;Writer&lt;/code&gt; làm việc với ký tự.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;BufferedInputStream&lt;/code&gt;/&lt;code&gt;BufferedOutputStream&lt;/code&gt; và &lt;code&gt;BufferedReader&lt;/code&gt;/&lt;code&gt;BufferedWriter&lt;/code&gt; giúp giảm số lần IO.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;DataInputStream&lt;/code&gt;/&lt;code&gt;DataOutputStream&lt;/code&gt; hỗ trợ kiểu dữ liệu nguyên thủy và length-prefix.&lt;/li&gt;&#xA;&lt;li&gt;Hàm &lt;code&gt;read()&lt;/code&gt; có thể trả về ít byte hơn yêu cầu; cần vòng lặp đọc đầy đủ.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;PrintWriter&lt;/code&gt; có autoFlush khi ghi newline, cần cấu hình đúng để không bị trễ.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Trong lập trình mạng, dữ liệu đi theo từng gói nên việc đọc/ghi thường không trọn vẹn ở một lần gọi. Nếu không xử lý đúng, client sẽ nhận thiếu dữ liệu hoặc ghép sai message. Vì vậy, việc định nghĩa khung (framing) là bắt buộc: có thể dùng delimiter (&lt;code&gt;\n&lt;/code&gt;), length-prefix (đọc trước độ dài), hoặc fixed-size.&lt;/p&gt;</description>
     </item>
   </channel>

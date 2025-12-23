@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>UDP on Blog Lập Trình Mạng</title>
-    <link>http://localhost:1313/Blog_Myself/tags/udp/</link>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/udp/</link>
     <description>Recent content in UDP on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 23 Dec 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/Blog_Myself/tags/udp/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/udp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi 8 (23/12) – Multicast UDP &amp; Java RMI</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/</link>
       <pubDate>Mon, 23 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Gửi thông báo tới nhiều client cùng nhóm multicast.&lt;/li&gt;&#xA;&lt;li&gt;Hiểu kiến trúc Java RMI và cách tạo interface dịch vụ.&lt;/li&gt;&#xA;&lt;li&gt;Thiết lập registry và kết nối client gọi hàm từ xa.&lt;/li&gt;&#xA;&lt;li&gt;Tổng hợp kiến thức TCP/UDP vào báo cáo cuối kỳ.&lt;/li&gt;&#xA;&lt;li&gt;Đánh giá ưu/nhược khi dùng Multicast và RMI.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Dải địa chỉ multicast (224.0.0.0–239.255.255.255) và quy trình join/leave group.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;MulticastSocket&lt;/code&gt; dùng chung port, các client cùng group sẽ nhận được bản tin.&lt;/li&gt;&#xA;&lt;li&gt;Thiết lập TTL để giới hạn phạm vi gói multicast.&lt;/li&gt;&#xA;&lt;li&gt;Thành phần RMI: &lt;code&gt;Remote&lt;/code&gt; interface, implementation, registry, client.&lt;/li&gt;&#xA;&lt;li&gt;RMI sử dụng serialization, mọi tham số trả về phải &lt;code&gt;Serializable&lt;/code&gt;.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Multicast phù hợp khi cần gửi thông báo cho nhiều client cùng lúc (ví dụ thông báo lịch học, trạng thái lớp lab). So với gửi unicast từng client, multicast tiết kiệm băng thông hơn. Tuy nhiên, multicast phụ thuộc vào cấu hình mạng và có thể bị chặn bởi router hoặc firewall.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Buổi 6 (09/12) – Lập trình socket UDP</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</link>
       <pubDate>Mon, 09 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Tạo UDP server và client trao đổi datagram ngắn.&lt;/li&gt;&#xA;&lt;li&gt;Thiết lập timeout để không bị treo khi mất gói.&lt;/li&gt;&#xA;&lt;li&gt;Cài đặt cơ chế ACK/Retry đơn giản cho thông điệp quan trọng.&lt;/li&gt;&#xA;&lt;li&gt;Quản lý kích thước gói để tránh phân mảnh.&lt;/li&gt;&#xA;&lt;li&gt;Đánh giá ưu/nhược của UDP so với TCP trong bài lab.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;DatagramSocket&lt;/code&gt;, &lt;code&gt;DatagramPacket&lt;/code&gt; và cách tái sử dụng buffer.&lt;/li&gt;&#xA;&lt;li&gt;UDP giữ nguyên ranh giới message (message boundary) nhưng không đảm bảo thứ tự.&lt;/li&gt;&#xA;&lt;li&gt;Kích thước gói an toàn ~1400 bytes để tránh phân mảnh trong mạng LAN.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;setSoTimeout()&lt;/code&gt; và cơ chế gửi lại khi không nhận được ACK.&lt;/li&gt;&#xA;&lt;li&gt;Cách nhận biết client bằng cặp địa chỉ IP + port.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Điểm khó nhất là UDP không có kết nối cố định, nên server phải tự quản lý trạng thái dựa trên IP/port gửi đến. Nếu client đổi port, server coi như một phiên mới. Ngoài ra, gói tin có thể mất hoặc đến trễ, vì vậy cần có số thứ tự (sequence) và ACK để đảm bảo dữ liệu quan trọng.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Buổi 2 (18/11) – Kiến thức nền tảng</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</link>
       <pubDate>Mon, 18 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-2-kien-thuc-nen-tang/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ghi nhớ mối liên hệ giữa OSI 7 lớp và TCP/IP 4 lớp để định vị lỗi nhanh.&lt;/li&gt;&#xA;&lt;li&gt;Nhận biết khi nào nên chọn TCP hay UDP dựa trên độ tin cậy và độ trễ.&lt;/li&gt;&#xA;&lt;li&gt;Hiểu vai trò của IP, port và socket trong một kết nối mạng.&lt;/li&gt;&#xA;&lt;li&gt;Nắm quy trình bắt tay TCP và cơ chế đóng kết nối an toàn.&lt;/li&gt;&#xA;&lt;li&gt;Biết các tham số cơ bản khi khởi tạo socket (timeout, backlog, buffer).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Ánh xạ tầng OSI sang TCP/IP: Application ↔ (Application), Transport ↔ (TCP/UDP), Internet ↔ (IP), Link ↔ (Ethernet/Wi-Fi).&lt;/li&gt;&#xA;&lt;li&gt;TCP header và ý nghĩa các trường: Source/Dest port, Sequence, ACK, Window, Flags (SYN/ACK/FIN).&lt;/li&gt;&#xA;&lt;li&gt;UDP header tối giản (Source/Dest port, Length, Checksum) và đặc tính không đảm bảo.&lt;/li&gt;&#xA;&lt;li&gt;Vòng đời kết nối TCP: DNS → connect → 3-way handshake → truyền dữ liệu → FIN/ACK → TIME_WAIT.&lt;/li&gt;&#xA;&lt;li&gt;Công cụ quan sát kết nối: &lt;code&gt;netstat&lt;/code&gt;/&lt;code&gt;ss&lt;/code&gt; để xem trạng thái port, Wireshark để bắt gói.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Khi ghép OSI với TCP/IP, mình dễ dàng xác định lớp nào đang gặp vấn đề. Ví dụ lỗi ở tầng Application thường xuất hiện dưới dạng sai định dạng dữ liệu, còn lỗi ở tầng Transport liên quan đến timeout hoặc mất gói. Cách suy nghĩ theo lớp giúp mình viết báo cáo có cấu trúc hơn và giải thích được nguyên nhân.&lt;/p&gt;</description>
     </item>
   </channel>

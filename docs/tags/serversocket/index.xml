@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ServerSocket on Blog Lập Trình Mạng</title>
-    <link>http://localhost:1313/Blog_Myself/tags/serversocket/</link>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/serversocket/</link>
     <description>Recent content in ServerSocket on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 02 Dec 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/Blog_Myself/tags/serversocket/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/serversocket/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi 5 (02/12) – Lập trình sockets TCP</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</link>
       <pubDate>Mon, 02 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Viết server TCP có khả năng phục vụ nhiều client tuần tự hoặc song song.&lt;/li&gt;&#xA;&lt;li&gt;Thiết kế giao thức dạng text gồm phần lệnh và dữ liệu.&lt;/li&gt;&#xA;&lt;li&gt;Quản lý vòng đời kết nối: mở, xử lý, đóng an toàn.&lt;/li&gt;&#xA;&lt;li&gt;Ghi log kết nối để dễ debug và báo cáo.&lt;/li&gt;&#xA;&lt;li&gt;Nhận biết các lỗi phổ biến: treo kết nối, timeout, client ngắt giữa chừng.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Quy trình &lt;code&gt;ServerSocket.accept()&lt;/code&gt; và &lt;code&gt;Socket&lt;/code&gt; phía client.&lt;/li&gt;&#xA;&lt;li&gt;TCP là stream nên cần quy ước tách message (newline hoặc length-prefix).&lt;/li&gt;&#xA;&lt;li&gt;Đóng kết nối đúng thứ tự để tránh rò rỉ tài nguyên.&lt;/li&gt;&#xA;&lt;li&gt;Chiến lược xử lý nhiều client: tuần tự, đa luồng, thread pool.&lt;/li&gt;&#xA;&lt;li&gt;Thiết lập timeout bằng &lt;code&gt;setSoTimeout()&lt;/code&gt; để tránh treo vô hạn.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Mình bắt đầu bằng server echo cơ bản, sau đó chuyển sang giao thức text: &lt;code&gt;COMMAND|DATA&lt;/code&gt;. Quy ước này giúp server phân tách lệnh rõ ràng, ví dụ &lt;code&gt;PING&lt;/code&gt;, &lt;code&gt;TIME&lt;/code&gt;, &lt;code&gt;QUIT&lt;/code&gt;. Khi chưa có quy ước, client gửi chuỗi bất kỳ khiến server khó xử lý và dễ lỗi.&lt;/p&gt;</description>
     </item>
   </channel>

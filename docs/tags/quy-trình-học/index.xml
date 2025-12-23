@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Quy Trình Học on Blog Lập Trình Mạng</title>
-    <link>http://localhost:1313/Blog_Myself/tags/quy-tr%C3%ACnh-h%E1%BB%8Dc/</link>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/quy-tr%C3%ACnh-h%E1%BB%8Dc/</link>
     <description>Recent content in Quy Trình Học on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 11 Nov 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/Blog_Myself/tags/quy-tr%C3%ACnh-h%E1%BB%8Dc/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/quy-tr%C3%ACnh-h%E1%BB%8Dc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi 1 (11/11) – Tổng quan khóa học</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-1-tong-quan-khoa-hoc/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-1-tong-quan-khoa-hoc/</link>
       <pubDate>Mon, 11 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-1-tong-quan-khoa-hoc/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-1-tong-quan-khoa-hoc/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hiểu kỳ vọng của giảng viên về báo cáo và minh chứng lab.&lt;/li&gt;&#xA;&lt;li&gt;Cài đặt đầy đủ JDK, IDE và công cụ kiểm tra mạng.&lt;/li&gt;&#xA;&lt;li&gt;Phác họa các chủ đề chính sẽ học trong 8 tuần tới.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Tóm tắt mô hình TCP/IP và vai trò của từng tầng.&lt;/li&gt;&#xA;&lt;li&gt;Lộ trình bài lab: từ Socket cơ bản tới Multicast &amp;amp; RMI.&lt;/li&gt;&#xA;&lt;li&gt;Nguyên tắc viết báo cáo: trình bày lý thuyết, sơ đồ, mã nguồn và kết quả kiểm thử.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Ngoài các nội dung trên, giảng viên nhấn mạnh quy trình làm bài:&lt;/p&gt;</description>
     </item>
   </channel>

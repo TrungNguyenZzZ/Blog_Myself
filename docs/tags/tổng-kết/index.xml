@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tổng Kết on Blog Lập Trình Mạng</title>
-    <link>http://localhost:1313/Blog_Myself/tags/t%E1%BB%95ng-k%E1%BA%BFt/</link>
+    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/t%E1%BB%95ng-k%E1%BA%BFt/</link>
     <description>Recent content in Tổng Kết on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 30 Dec 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/Blog_Myself/tags/t%E1%BB%95ng-k%E1%BA%BFt/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/t%E1%BB%95ng-k%E1%BA%BFt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi 9 (30/12) – Tổng kết khóa học</title>
-      <link>http://localhost:1313/Blog_Myself/blog/buoi-9-tong-ket-khoa-hoc/</link>
+      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-9-tong-ket-khoa-hoc/</link>
       <pubDate>Mon, 30 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>http://localhost:1313/Blog_Myself/blog/buoi-9-tong-ket-khoa-hoc/</guid>
+      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-9-tong-ket-khoa-hoc/</guid>
       <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hệ thống lại toàn bộ kiến thức từ TCP/IP đến Multicast &amp;amp; RMI.&lt;/li&gt;&#xA;&lt;li&gt;Tự đánh giá điểm mạnh/yếu trong quá trình làm lab.&lt;/li&gt;&#xA;&lt;li&gt;Hoàn thiện báo cáo và chuẩn bị bài nộp cuối kỳ.&lt;/li&gt;&#xA;&lt;li&gt;Xác định hướng ứng dụng kiến thức vào dự án thực tế.&lt;/li&gt;&#xA;&lt;li&gt;Lập kế hoạch ôn tập cho các môn liên quan (Hệ điều hành, An toàn mạng).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Chuỗi kiến thức lõi: TCP/UDP → Socket → Đa luồng → Multicast/RMI.&lt;/li&gt;&#xA;&lt;li&gt;Quy trình làm bài lab: phân tích yêu cầu → chọn giao thức → thiết kế message → test.&lt;/li&gt;&#xA;&lt;li&gt;Lỗi thường gặp: timeout, dính gói, race condition, không đóng socket.&lt;/li&gt;&#xA;&lt;li&gt;Kỹ năng báo cáo: sơ đồ kiến trúc, mô tả protocol, log kiểm thử.&lt;/li&gt;&#xA;&lt;li&gt;Tiêu chí đánh giá: độ ổn định, tính đúng đắn, khả năng mở rộng.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Nhìn lại toàn khóa, phần khó nhất với mình là thiết kế giao thức đủ rõ ràng để client/server hiểu nhau trong mọi trường hợp (mất gói, trễ, hoặc client ngắt giữa chừng). Nhờ các buổi lab, mình hiểu được tầm quan trọng của format message, cơ chế timeout và log lỗi.&lt;/p&gt;</description>
     </item>
   </channel>
