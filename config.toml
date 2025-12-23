@@ -156,9 +156,15 @@ file = "files/java1.pdf"
 image = "images/network-placeholder.png"
 
 [[params.certificates]]
-title = "Java Foundations Workshop"
-issuer = "UIT Lab · 2025"
+title = "JavaScript Essentials 1"
+issuer = "Cisco NetAcad · 2025"
 file = "files/javabasic.pdf"
+image = "images/network-placeholder.png"
+
+[[params.certificates]]
+title = "JavaScript Essentials 2"
+issuer = "Cisco NetAcad · 2025"
+file = "files/JavaScriptEssentials2.pdf"
 image = "images/network-placeholder.png"
 
 [params.seo]
