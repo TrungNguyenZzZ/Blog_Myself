@@ -94,6 +94,11 @@ week = 8
 title = "Multicast & Java RMI"
 topics = ["Nhóm multicast", "Registry", "Triển khai dịch vụ RMI"]
 
+[[params.courseOutline]]
+week = 9
+title = "Tổng kết khóa học"
+topics = ["Ôn tập toàn bộ nội dung", "Đánh giá kỹ năng đạt được", "Định hướng dự án tiếp theo"]
+
 courseTechnologies = ["Socket", "TCP/UDP", "Client-Server", "Multithreading"]
 
 [[params.navLinks]]

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi-vn">
-  <head>
+  <head><script src="/Blog_Myself/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Blog_Myself/livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buổi 3 (25/11) – Quản lý các luồng nhập xuất | Blog Lập Trình Mạng</title>
@@ -24,7 +24,7 @@
     <div class="site-wrapper">
       <header class="site-header">
         <div class="container site-header__inner">
-          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+          <a class="logo" href="http://localhost:1313/Blog_Myself/">
             <span>Blog Lập Trình Mạng</span>
           </a>
           <nav>
@@ -35,31 +35,31 @@
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                  <a href="http://localhost:1313/Blog_Myself/#hero">Home</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                  <a href="http://localhost:1313/Blog_Myself/blog/">Blog</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                  <a href="http://localhost:1313/Blog_Myself/course/">Course</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                  <a href="http://localhost:1313/Blog_Myself/about/">About</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                  <a href="http://localhost:1313/Blog_Myself/contact/">Contact</a>
                 
               
             </div>
@@ -94,7 +94,7 @@
       
         
       
-      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 3 (25/11) – Quản lý các luồng nhập xuất" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+      <img src="/Blog_Myself/images/buoi3.jpg" alt="Buổi 3 (25/11) – Quản lý các luồng nhập xuất" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
     
     <article class="post-content">
       
@@ -108,37 +108,42 @@
       
       <h2 id="mục-tiêu-buổi-học">Mục tiêu buổi học</h2>
 <ul>
-<li>Phân biệt stream nhị phân và stream ký tự trên Java.</li>
-<li>Biết cách bọc buffer để tăng hiệu năng đọc/ghi socket.</li>
-<li>Viết code đóng tài nguyên chính xác, tránh rò rỉ.</li>
+<li>Phân biệt stream nhị phân và stream ký tự trong Java.</li>
+<li>Hiểu cách bọc buffer để tăng hiệu năng đọc/ghi socket.</li>
+<li>Chuẩn hóa định dạng thông điệp để tránh dính gói/đứt gói.</li>
+<li>Biết sử dụng <code>try-with-resources</code> và <code>flush()</code> đúng thời điểm.</li>
+<li>Kiểm soát encoding (UTF-8) để tránh lỗi ký tự khi truyền dữ liệu.</li>
 </ul>
 <h2 id="kiến-thức-chính">Kiến thức chính</h2>
 <ol>
-<li>Cặp <code>InputStream</code>/<code>OutputStream</code> kết hợp với <code>BufferedInputStream</code>.</li>
-<li>Cách sử dụng <code>try-with-resources</code> để tự động đóng socket và stream.</li>
-<li>Tại sao cần chuẩn hóa định dạng thông điệp (length-prefix, newline&hellip;).</li>
+<li><code>InputStream</code>/<code>OutputStream</code> làm việc với byte, <code>Reader</code>/<code>Writer</code> làm việc với ký tự.</li>
+<li><code>BufferedInputStream</code>/<code>BufferedOutputStream</code> và <code>BufferedReader</code>/<code>BufferedWriter</code> giúp giảm số lần IO.</li>
+<li><code>DataInputStream</code>/<code>DataOutputStream</code> hỗ trợ kiểu dữ liệu nguyên thủy và length-prefix.</li>
+<li>Hàm <code>read()</code> có thể trả về ít byte hơn yêu cầu; cần vòng lặp đọc đầy đủ.</li>
+<li><code>PrintWriter</code> có autoFlush khi ghi newline, cần cấu hình đúng để không bị trễ.</li>
 </ol>
 <h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
-<p>Buổi này mình nhận ra thao tác IO ảnh hưởng trực tiếp đến độ ổn định của server. Nếu đọc từng byte mà không buffer, CPU sẽ bị kéo xuống đáng kể. Khi viết báo cáo, mình so sánh hai biểu đồ đo thời gian truyền dữ liệu có/không buffer để thấy rõ sự chênh lệch. Ngoài ra, giảng viên nhấn mạnh việc kiểm soát encoding khi chuyển qua stream ký tự để tránh lỗi phân mảnh gói tin.</p>
+<p>Trong lập trình mạng, dữ liệu đi theo từng gói nên việc đọc/ghi thường không trọn vẹn ở một lần gọi. Nếu không xử lý đúng, client sẽ nhận thiếu dữ liệu hoặc ghép sai message. Vì vậy, việc định nghĩa khung (framing) là bắt buộc: có thể dùng delimiter (<code>\n</code>), length-prefix (đọc trước độ dài), hoặc fixed-size.</p>
+<p>Một lỗi phổ biến là quên thống nhất encoding giữa client và server. Khi server dùng UTF-8 mà client dùng mặc định hệ thống, dấu tiếng Việt có thể bị sai. Giảng viên yêu cầu ghi rõ encoding trong báo cáo và trong code để tránh lỗi không tái hiện được.</p>
+<p>Mình cũng nhận ra buffer giúp giảm đáng kể thời gian truyền, nhất là khi gửi file. Thử nghiệm của nhóm cho thấy đọc/ghi theo byte đơn lẻ chậm hơn nhiều lần so với đọc/ghi theo block 4KB hoặc 8KB.</p>
 <h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
-<p>Mẫu server mini đọc yêu cầu theo từng dòng:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> server <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">ServerSocket</span>(9090)) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> server.<span style="color:#a6e22e">accept</span>();
-</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">var</span> reader <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">BufferedReader</span>(
-</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">InputStreamReader</span>(socket.<span style="color:#a6e22e">getInputStream</span>()));
-</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">var</span> writer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">PrintWriter</span>(socket.<span style="color:#a6e22e">getOutputStream</span>(), <span style="color:#66d9ef">true</span>)) {
-</span></span><span style="display:flex;"><span>    String line;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> ((line <span style="color:#f92672">=</span> reader.<span style="color:#a6e22e">readLine</span>()) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
-</span></span><span style="display:flex;"><span>      writer.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Server nhận: &#34;</span> <span style="color:#f92672">+</span> line);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Code sử dụng <code>BufferedReader</code> và <code>PrintWriter</code> để thao tác với chuỗi có newline.</p>
+<p>Ví dụ gửi/nhận theo length-prefix để tránh dính gói:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> out <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">DataOutputStream</span>(socket.<span style="color:#a6e22e">getOutputStream</span>());
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HELLO SOCKET&#34;</span>.<span style="color:#a6e22e">getBytes</span>(java.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">charset</span>.<span style="color:#a6e22e">StandardCharsets</span>.<span style="color:#a6e22e">UTF_8</span>);
+</span></span><span style="display:flex;"><span>out.<span style="color:#a6e22e">writeInt</span>(payload.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>out.<span style="color:#a6e22e">write</span>(payload);
+</span></span><span style="display:flex;"><span>out.<span style="color:#a6e22e">flush</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> in <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">io</span>.<span style="color:#a6e22e">DataInputStream</span>(socket.<span style="color:#a6e22e">getInputStream</span>());
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> in.<span style="color:#a6e22e">readInt</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> data <span style="color:#f92672">=</span> in.<span style="color:#a6e22e">readNBytes</span>(len);
+</span></span><span style="display:flex;"><span>String message <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(data, java.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">charset</span>.<span style="color:#a6e22e">StandardCharsets</span>.<span style="color:#a6e22e">UTF_8</span>);
+</span></span></code></pre></div><p>Cách này đảm bảo đọc đủ số byte trước khi xử lý nội dung.</p>
 <h2 id="tổng-kết">Tổng kết</h2>
 <ul>
-<li>Luôn bọc stream bằng buffer nếu dữ liệu có kích thước đáng kể.</li>
-<li>Thiết kế format thông điệp rõ ràng để client/server hiểu nhau.</li>
-<li>Chuẩn bị ôn phần địa chỉ mạng cho buổi 4.</li>
+<li>Luôn xác định trước format dữ liệu để tránh lỗi dính/đứt gói.</li>
+<li>Buffer và encoding là hai yếu tố ảnh hưởng lớn đến độ ổn định.</li>
+<li>Chuẩn bị kiến thức địa chỉ mạng cho buổi 4.</li>
 </ul>
 
     </article>
@@ -168,6 +173,12 @@
     <section class="section">
       <h2 class="section__heading">Bài viết liên quan</h2>
       <div class="related-grid">
+        
+          <article class="card">
+            <h3>Buổi 9 (30/12) – Tổng kết khóa học</h3>
+            <p>Tổng hợp kiến thức đã học, đánh giá kỹ năng đạt được và kế hoạch ứng dụng thực tế.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-9-tong-ket-khoa-hoc/">Đọc tiếp →</a>
+          </article>
         
           <article class="card">
             <h3>Buổi 2 (18/11) – Kiến thức nền tảng</h3>

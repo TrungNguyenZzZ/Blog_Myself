@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi-vn">
-  <head>
+  <head><script src="/Blog_Myself/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Blog_Myself/livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buổi 8 (23/12) – Multicast UDP &amp; Java RMI | Blog Lập Trình Mạng</title>
@@ -24,7 +24,7 @@
     <div class="site-wrapper">
       <header class="site-header">
         <div class="container site-header__inner">
-          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+          <a class="logo" href="http://localhost:1313/Blog_Myself/">
             <span>Blog Lập Trình Mạng</span>
           </a>
           <nav>
@@ -35,31 +35,31 @@
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                  <a href="http://localhost:1313/Blog_Myself/#hero">Home</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                  <a href="http://localhost:1313/Blog_Myself/blog/">Blog</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                  <a href="http://localhost:1313/Blog_Myself/course/">Course</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                  <a href="http://localhost:1313/Blog_Myself/about/">About</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                  <a href="http://localhost:1313/Blog_Myself/contact/">Contact</a>
                 
               
             </div>
@@ -94,7 +94,7 @@
       
         
       
-      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 8 (23/12) – Multicast UDP &amp; Java RMI" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+      <img src="/Blog_Myself/images/buoi8.jpg" alt="Buổi 8 (23/12) – Multicast UDP &amp; Java RMI" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
     
     <article class="post-content">
       
@@ -110,35 +110,42 @@
 <ul>
 <li>Gửi thông báo tới nhiều client cùng nhóm multicast.</li>
 <li>Hiểu kiến trúc Java RMI và cách tạo interface dịch vụ.</li>
-<li>Tổng hợp toàn bộ kiến thức để chuẩn bị báo cáo cuối kỳ.</li>
+<li>Thiết lập registry và kết nối client gọi hàm từ xa.</li>
+<li>Tổng hợp kiến thức TCP/UDP vào báo cáo cuối kỳ.</li>
+<li>Đánh giá ưu/nhược khi dùng Multicast và RMI.</li>
 </ul>
 <h2 id="kiến-thức-chính">Kiến thức chính</h2>
 <ol>
-<li><code>MulticastSocket</code> và quy trình join/leave group.</li>
-<li>Yêu cầu firewall khi dùng địa chỉ 224.0.0.0/4.</li>
-<li>Component của RMI: interface, implementation, registry, client.</li>
+<li>Dải địa chỉ multicast (224.0.0.0–239.255.255.255) và quy trình join/leave group.</li>
+<li><code>MulticastSocket</code> dùng chung port, các client cùng group sẽ nhận được bản tin.</li>
+<li>Thiết lập TTL để giới hạn phạm vi gói multicast.</li>
+<li>Thành phần RMI: <code>Remote</code> interface, implementation, registry, client.</li>
+<li>RMI sử dụng serialization, mọi tham số trả về phải <code>Serializable</code>.</li>
 </ol>
 <h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
-<p>Multicast phù hợp cho các thông báo không yêu cầu xác nhận từng client, ví dụ cập nhật trạng thái lớp học. Ngược lại, RMI giúp gọi hàm từ xa nhưng cần registry hoạt động ổn định. Trong báo cáo mình vẽ sơ đồ tổng hợp: client nhận thông báo multicast, đồng thời có thể gọi RMI để lấy danh sách bài lab.</p>
+<p>Multicast phù hợp khi cần gửi thông báo cho nhiều client cùng lúc (ví dụ thông báo lịch học, trạng thái lớp lab). So với gửi unicast từng client, multicast tiết kiệm băng thông hơn. Tuy nhiên, multicast phụ thuộc vào cấu hình mạng và có thể bị chặn bởi router hoặc firewall.</p>
+<p>RMI lại phù hợp với mô hình gọi hàm từ xa, giúp code client giống như gọi hàm cục bộ. Điểm cần lưu ý là phải xử lý <code>RemoteException</code> và đảm bảo mọi đối tượng truyền qua mạng đều có thể serialize. Khi triển khai, mình chạy registry trên port 1099 và đăng ký service trong báo cáo.</p>
 <h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Multicast sender</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">MulticastSocket</span>()) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> group <span style="color:#f92672">=</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">InetAddress</span>.<span style="color:#a6e22e">getByName</span>(<span style="color:#e6db74">&#34;230.0.0.123&#34;</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> data <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Thông báo: kiểm tra cuối kỳ tuần sau!&#34;</span>.<span style="color:#a6e22e">getBytes</span>();
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> packet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">DatagramPacket</span>(data, data.<span style="color:#a6e22e">length</span>, group, 4446);
-</span></span><span style="display:flex;"><span>  socket.<span style="color:#a6e22e">send</span>(packet);
+<p>Multicast receiver đơn giản:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> group <span style="color:#f92672">=</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">InetAddress</span>.<span style="color:#a6e22e">getByName</span>(<span style="color:#e6db74">&#34;230.0.0.123&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">MulticastSocket</span>(4446)) {
+</span></span><span style="display:flex;"><span>  socket.<span style="color:#a6e22e">joinGroup</span>(group);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> packet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">DatagramPacket</span>(buffer, buffer.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>  socket.<span style="color:#a6e22e">receive</span>(packet);
+</span></span><span style="display:flex;"><span>  String message <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(packet.<span style="color:#a6e22e">getData</span>(), 0, packet.<span style="color:#a6e22e">getLength</span>(), java.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">charset</span>.<span style="color:#a6e22e">StandardCharsets</span>.<span style="color:#a6e22e">UTF_8</span>);
+</span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Received: &#34;</span> <span style="color:#f92672">+</span> message);
+</span></span><span style="display:flex;"><span>  socket.<span style="color:#a6e22e">leaveGroup</span>(group);
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// RMI interface</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">CourseService</span> <span style="color:#66d9ef">extends</span> java.<span style="color:#a6e22e">rmi</span>.<span style="color:#a6e22e">Remote</span> {
+</span></span></code></pre></div><p>RMI interface tối giản:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">CourseService</span> <span style="color:#66d9ef">extends</span> java.<span style="color:#a6e22e">rmi</span>.<span style="color:#a6e22e">Remote</span> {
 </span></span><span style="display:flex;"><span>  java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">List</span><span style="color:#f92672">&lt;</span>String<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">getLabs</span>() <span style="color:#66d9ef">throws</span> java.<span style="color:#a6e22e">rmi</span>.<span style="color:#a6e22e">RemoteException</span>;
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Ví dụ minh họa hai kỹ thuật trọng tâm của buổi cuối.</p>
-<h2 id="tổng-kết">Tổng kết</h2>
+</span></span></code></pre></div><h2 id="tổng-kết">Tổng kết</h2>
 <ul>
-<li>Đã hoàn thành 8 buổi học với đầy đủ ghi chép trên blog.</li>
-<li>Cần rà soát lại code, bổ sung hình ảnh minh chứng trước khi nộp.</li>
-<li>Tự tin deploy blog lên GitHub Pages để giảng viên truy cập thuận tiện.</li>
+<li>Multicast phù hợp thông báo nhóm, RMI phù hợp gọi hàm từ xa.</li>
+<li>Cần kiểm tra firewall và quyền mạng khi chạy multicast/RMI.</li>
+<li>Hoàn thiện báo cáo tổng hợp và chuẩn bị nộp cuối kỳ.</li>
 </ul>
 
     </article>

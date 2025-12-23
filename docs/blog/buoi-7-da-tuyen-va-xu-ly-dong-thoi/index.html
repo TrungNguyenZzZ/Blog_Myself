@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi-vn">
-  <head>
+  <head><script src="/Blog_Myself/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Blog_Myself/livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời | Blog Lập Trình Mạng</title>
@@ -24,7 +24,7 @@
     <div class="site-wrapper">
       <header class="site-header">
         <div class="container site-header__inner">
-          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+          <a class="logo" href="http://localhost:1313/Blog_Myself/">
             <span>Blog Lập Trình Mạng</span>
           </a>
           <nav>
@@ -35,31 +35,31 @@
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                  <a href="http://localhost:1313/Blog_Myself/#hero">Home</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                  <a href="http://localhost:1313/Blog_Myself/blog/">Blog</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                  <a href="http://localhost:1313/Blog_Myself/course/">Course</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                  <a href="http://localhost:1313/Blog_Myself/about/">About</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                  <a href="http://localhost:1313/Blog_Myself/contact/">Contact</a>
                 
               
             </div>
@@ -94,7 +94,7 @@
       
         
       
-      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+      <img src="/Blog_Myself/images/buoi7.png" alt="Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
     
     <article class="post-content">
       
@@ -108,38 +108,47 @@
       
       <h2 id="mục-tiêu-buổi-học">Mục tiêu buổi học</h2>
 <ul>
-<li>Biết lựa chọn mô hình thread phù hợp (per-connection, thread-pool).</li>
+<li>Lựa chọn mô hình thread phù hợp (per-connection hoặc thread-pool).</li>
 <li>Ngăn chặn race condition khi chia sẻ tài nguyên chung.</li>
-<li>Ghi nhận số lượng client đang kết nối theo thời gian thực.</li>
+<li>Theo dõi số lượng client đang kết nối theo thời gian thực.</li>
+<li>Tối ưu throughput mà không làm cạn tài nguyên hệ thống.</li>
+<li>Biết cách dừng server an toàn khi kết thúc bài lab.</li>
 </ul>
 <h2 id="kiến-thức-chính">Kiến thức chính</h2>
 <ol>
 <li><code>ExecutorService</code> và pattern submit task cho từng client.</li>
-<li>Sử dụng <code>ConcurrentHashMap</code> để lưu trạng thái kết nối.</li>
-<li>Kết hợp synchronized/lock để bảo vệ tài nguyên quan trọng.</li>
+<li><code>ConcurrentHashMap</code>/<code>AtomicInteger</code> để chia sẻ dữ liệu an toàn.</li>
+<li><code>synchronized</code>/<code>Lock</code> khi cần bảo vệ vùng dữ liệu quan trọng.</li>
+<li>Chi phí tạo thread và lợi ích của thread pool cố định.</li>
+<li>Quy trình đóng socket trong <code>try/finally</code> để tránh rò rỉ.</li>
 </ol>
 <h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
-<p>Mình refactor bài TCP trước đó để tận dụng <code>Executors.newFixedThreadPool(8)</code>. Nhờ vậy server không tạo quá nhiều thread dẫn đến cạn kiệt tài nguyên. Ngoài ra, mình thêm bộ đếm <code>AtomicInteger</code> để biết hiện có bao nhiêu client online. Báo cáo cũng so sánh thời gian phản hồi giữa mô hình tuần tự và thread-pool.</p>
+<p>Thread-per-connection dễ hiểu nhưng có nguy cơ tạo quá nhiều thread khi client tăng đột biến, dẫn đến quá tải CPU và RAM. Vì vậy, nhóm mình chuyển sang thread pool để giới hạn số luồng xử lý đồng thời. Điều này giúp server ổn định hơn khi có nhiều client kết nối cùng lúc.</p>
+<p>Khi chia sẻ dữ liệu (ví dụ danh sách client online), nếu không dùng cấu trúc đồng bộ, chương trình dễ gặp lỗi race condition. Trong lab, mình dùng <code>ConcurrentHashMap</code> lưu thông tin client và <code>AtomicInteger</code> đếm số kết nối. Nhờ vậy, số liệu thống kê luôn chính xác.</p>
+<p>Một lưu ý quan trọng là luôn đóng socket trong <code>finally</code> để đảm bảo tài nguyên được giải phóng, kể cả khi xử lý gặp lỗi.</p>
 <h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
+<p>Server với thread pool và bộ đếm kết nối:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> executor <span style="color:#f92672">=</span> java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">concurrent</span>.<span style="color:#a6e22e">Executors</span>.<span style="color:#a6e22e">newFixedThreadPool</span>(8);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">var</span> connections <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">util</span>.<span style="color:#a6e22e">concurrent</span>.<span style="color:#a6e22e">atomic</span>.<span style="color:#a6e22e">AtomicInteger</span>();
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> server <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">ServerSocket</span>(10003)) {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> server.<span style="color:#a6e22e">accept</span>();
 </span></span><span style="display:flex;"><span>    executor.<span style="color:#a6e22e">submit</span>(() <span style="color:#f92672">-&gt;</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">int</span> current <span style="color:#f92672">=</span> connections.<span style="color:#a6e22e">incrementAndGet</span>();
-</span></span><span style="display:flex;"><span>      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client vào, tổng: &#34;</span> <span style="color:#f92672">+</span> current);
-</span></span><span style="display:flex;"><span>      handle(socket);
-</span></span><span style="display:flex;"><span>      current <span style="color:#f92672">=</span> connections.<span style="color:#a6e22e">decrementAndGet</span>();
-</span></span><span style="display:flex;"><span>      System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Client thoát, còn: &#34;</span> <span style="color:#f92672">+</span> current);
+</span></span><span style="display:flex;"><span>      connections.<span style="color:#a6e22e">incrementAndGet</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        handle(socket);
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">finally</span> {
+</span></span><span style="display:flex;"><span>        connections.<span style="color:#a6e22e">decrementAndGet</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> { socket.<span style="color:#a6e22e">close</span>(); } <span style="color:#66d9ef">catch</span> (Exception ignored) { }
+</span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p><code>handle</code> tái sử dụng logic đọc/ghi cũ nhưng giờ an toàn hơn.</p>
+</span></span></code></pre></div><p>Cách này giới hạn số thread và vẫn đảm bảo đóng socket an toàn.</p>
 <h2 id="tổng-kết">Tổng kết</h2>
 <ul>
-<li>Thống nhất giới hạn thread để tránh server bị DOS.</li>
-<li>Ghi log trạng thái để dễ làm báo cáo phân tích tải.</li>
+<li>Thread pool giúp server ổn định và tránh bị DOS.</li>
+<li>Cần dùng cấu trúc dữ liệu đồng bộ khi chia sẻ trạng thái.</li>
 <li>Chuẩn bị cho buổi cuối về multicast và RMI.</li>
 </ul>
 

@@ -5,7 +5,7 @@ description = "Giới thiệu yêu cầu môn học, cấu trúc lab và các c�
 categories = ["Buổi học"]
 tags = ["Overview", "Quy trình học"]
 session = 1
-featuredImage = "images/network-placeholder.png"
+featuredImage = "images/buoi1.png"
 +++
 
 ## Mục tiêu buổi học
@@ -18,8 +18,18 @@ featuredImage = "images/network-placeholder.png"
 2. Lộ trình bài lab: từ Socket cơ bản tới Multicast & RMI.
 3. Nguyên tắc viết báo cáo: trình bày lý thuyết, sơ đồ, mã nguồn và kết quả kiểm thử.
 
+Ngoài các nội dung trên, giảng viên nhấn mạnh quy trình làm bài:
+- Báo cáo phải có mục tiêu, sơ đồ luồng dữ liệu, ảnh minh chứng và phần nhận xét cuối.
+- File nộp nên đặt tên thống nhất theo buổi học để dễ tra cứu.
+- Các công cụ kiểm tra cơ bản: `ping`, `tracert/traceroute`, `netstat`, Wireshark.
+
 ## Phân tích & giải thích
 Mình ghi chú lại cách giảng viên đánh giá: mỗi lab cần có mục tiêu, sơ đồ trao đổi gói tin và kiểm chứng kết quả bằng hình ảnh/ghi log. Việc nắm rõ tiêu chí ngay từ buổi đầu giúp tiết kiệm thời gian sửa bài. Ngoài ra, buổi này cũng nhấn mạnh mối liên hệ giữa mô hình TCP/IP với Socket API trên Java, vì vậy mình ôn lại từng layer và ví dụ loại ứng dụng phù hợp.
+
+Mình cũng lập checklist chuẩn bị môi trường để tránh lỗi khi chạy lab:
+- JDK LTS, IDE (IntelliJ/VSCode) và cấu hình encoding UTF-8.
+- Kiểm tra quyền firewall, đặc biệt khi mở cổng server.
+- Chuẩn bị repo Git để lưu code, log và ảnh chụp màn hình.
 
 ## Ví dụ minh họa / Code
 Để chắc chắn môi trường chạy ổn, mình viết chương trình kiểm tra phiên bản Java và hostname:

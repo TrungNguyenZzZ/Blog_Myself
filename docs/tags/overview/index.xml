@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Overview on Blog Lập Trình Mạng</title>
-    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/overview/</link>
+    <link>http://localhost:1313/Blog_Myself/tags/overview/</link>
     <description>Recent content in Overview on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 11 Nov 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/overview/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/Blog_Myself/tags/overview/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi 1 (11/11) – Tổng quan khóa học</title>
-      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-1-tong-quan-khoa-hoc/</link>
+      <link>http://localhost:1313/Blog_Myself/blog/buoi-1-tong-quan-khoa-hoc/</link>
       <pubDate>Mon, 11 Nov 2024 09:00:00 +0700</pubDate>
-      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-1-tong-quan-khoa-hoc/</guid>
-      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hiểu kỳ vọng của giảng viên về báo cáo và minh chứng lab.&lt;/li&gt;&#xA;&lt;li&gt;Cài đặt đầy đủ JDK, IDE và công cụ kiểm tra mạng.&lt;/li&gt;&#xA;&lt;li&gt;Phác họa các chủ đề chính sẽ học trong 8 tuần tới.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Tóm tắt mô hình TCP/IP và vai trò của từng tầng.&lt;/li&gt;&#xA;&lt;li&gt;Lộ trình bài lab: từ Socket cơ bản tới Multicast &amp;amp; RMI.&lt;/li&gt;&#xA;&lt;li&gt;Nguyên tắc viết báo cáo: trình bày lý thuyết, sơ đồ, mã nguồn và kết quả kiểm thử.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Mình ghi chú lại cách giảng viên đánh giá: mỗi lab cần có mục tiêu, sơ đồ trao đổi gói tin và kiểm chứng kết quả bằng hình ảnh/ghi log. Việc nắm rõ tiêu chí ngay từ buổi đầu giúp tiết kiệm thời gian sửa bài. Ngoài ra, buổi này cũng nhấn mạnh mối liên hệ giữa mô hình TCP/IP với Socket API trên Java, vì vậy mình ôn lại từng layer và ví dụ loại ứng dụng phù hợp.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/Blog_Myself/blog/buoi-1-tong-quan-khoa-hoc/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hiểu kỳ vọng của giảng viên về báo cáo và minh chứng lab.&lt;/li&gt;&#xA;&lt;li&gt;Cài đặt đầy đủ JDK, IDE và công cụ kiểm tra mạng.&lt;/li&gt;&#xA;&lt;li&gt;Phác họa các chủ đề chính sẽ học trong 8 tuần tới.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Tóm tắt mô hình TCP/IP và vai trò của từng tầng.&lt;/li&gt;&#xA;&lt;li&gt;Lộ trình bài lab: từ Socket cơ bản tới Multicast &amp;amp; RMI.&lt;/li&gt;&#xA;&lt;li&gt;Nguyên tắc viết báo cáo: trình bày lý thuyết, sơ đồ, mã nguồn và kết quả kiểm thử.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Ngoài các nội dung trên, giảng viên nhấn mạnh quy trình làm bài:&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

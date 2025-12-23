@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi-vn">
-  <head>
+  <head><script src="/Blog_Myself/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Blog_Myself/livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buổi 6 (09/12) – Lập trình socket UDP | Blog Lập Trình Mạng</title>
@@ -24,7 +24,7 @@
     <div class="site-wrapper">
       <header class="site-header">
         <div class="container site-header__inner">
-          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+          <a class="logo" href="http://localhost:1313/Blog_Myself/">
             <span>Blog Lập Trình Mạng</span>
           </a>
           <nav>
@@ -35,31 +35,31 @@
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                  <a href="http://localhost:1313/Blog_Myself/#hero">Home</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                  <a href="http://localhost:1313/Blog_Myself/blog/">Blog</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                  <a href="http://localhost:1313/Blog_Myself/course/">Course</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                  <a href="http://localhost:1313/Blog_Myself/about/">About</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                  <a href="http://localhost:1313/Blog_Myself/contact/">Contact</a>
                 
               
             </div>
@@ -94,7 +94,7 @@
       
         
       
-      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 6 (09/12) – Lập trình socket UDP" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+      <img src="/Blog_Myself/images/buoi6.jpg" alt="Buổi 6 (09/12) – Lập trình socket UDP" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
     
     <article class="post-content">
       
@@ -110,35 +110,44 @@
 <ul>
 <li>Tạo UDP server và client trao đổi datagram ngắn.</li>
 <li>Thiết lập timeout để không bị treo khi mất gói.</li>
-<li>Cài đặt cơ chế ACK đơn giản để đảm bảo nhận đủ thông điệp quan trọng.</li>
+<li>Cài đặt cơ chế ACK/Retry đơn giản cho thông điệp quan trọng.</li>
+<li>Quản lý kích thước gói để tránh phân mảnh.</li>
+<li>Đánh giá ưu/nhược của UDP so với TCP trong bài lab.</li>
 </ul>
 <h2 id="kiến-thức-chính">Kiến thức chính</h2>
 <ol>
 <li><code>DatagramSocket</code>, <code>DatagramPacket</code> và cách tái sử dụng buffer.</li>
-<li>Chiến lược đặt kích thước gói và xử lý phân mảnh.</li>
-<li>Cơ chế định thời (timeout) và gửi lại khi không nhận được phản hồi.</li>
+<li>UDP giữ nguyên ranh giới message (message boundary) nhưng không đảm bảo thứ tự.</li>
+<li>Kích thước gói an toàn ~1400 bytes để tránh phân mảnh trong mạng LAN.</li>
+<li><code>setSoTimeout()</code> và cơ chế gửi lại khi không nhận được ACK.</li>
+<li>Cách nhận biết client bằng cặp địa chỉ IP + port.</li>
 </ol>
 <h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
-<p>Điểm khó nhất là không có kết nối cố định, nên mình phải tự quản lý trạng thái client thông qua địa chỉ/port gửi lên. Ngoài ra, việc đặt kích thước buffer hợp lý giúp tránh lãng phí băng thông. Trong báo cáo mình trình bày bảng thống kê tỷ lệ mất gói khi thử nghiệm với mạng Wi-Fi và cách tăng cường bằng việc gửi lại tối đa 3 lần.</p>
+<p>Điểm khó nhất là UDP không có kết nối cố định, nên server phải tự quản lý trạng thái dựa trên IP/port gửi đến. Nếu client đổi port, server coi như một phiên mới. Ngoài ra, gói tin có thể mất hoặc đến trễ, vì vậy cần có số thứ tự (sequence) và ACK để đảm bảo dữ liệu quan trọng.</p>
+<p>Trong thí nghiệm, nhóm mình giới hạn kích thước gói để tránh phân mảnh. Khi gói bị phân mảnh, chỉ cần mất một mảnh là toàn bộ gói bị mất. Vì vậy, việc chia nhỏ dữ liệu thành nhiều gói nhỏ và có số thứ tự giúp việc ghép lại ổn định hơn.</p>
 <h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
+<p>Server phản hồi ACK kèm số thứ tự:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> buffer <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">byte</span><span style="color:#f92672">[</span>1024<span style="color:#f92672">]</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">DatagramSocket</span>(10002)) {
 </span></span><span style="display:flex;"><span>  socket.<span style="color:#a6e22e">setSoTimeout</span>(3000);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> packet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">DatagramPacket</span>(buffer, buffer.<span style="color:#a6e22e">length</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
 </span></span><span style="display:flex;"><span>    socket.<span style="color:#a6e22e">receive</span>(packet);
-</span></span><span style="display:flex;"><span>    String message <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(packet.<span style="color:#a6e22e">getData</span>(), 0, packet.<span style="color:#a6e22e">getLength</span>());
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> reply <span style="color:#f92672">=</span> (<span style="color:#e6db74">&#34;ACK:&#34;</span> <span style="color:#f92672">+</span> message).<span style="color:#a6e22e">getBytes</span>();
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> response <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">DatagramPacket</span>(
-</span></span><span style="display:flex;"><span>        reply, reply.<span style="color:#a6e22e">length</span>, packet.<span style="color:#a6e22e">getAddress</span>(), packet.<span style="color:#a6e22e">getPort</span>());
+</span></span><span style="display:flex;"><span>    String message <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> String(packet.<span style="color:#a6e22e">getData</span>(), 0, packet.<span style="color:#a6e22e">getLength</span>(), java.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">charset</span>.<span style="color:#a6e22e">StandardCharsets</span>.<span style="color:#a6e22e">UTF_8</span>);
+</span></span><span style="display:flex;"><span>    String<span style="color:#f92672">[]</span> parts <span style="color:#f92672">=</span> message.<span style="color:#a6e22e">split</span>(<span style="color:#e6db74">&#34;\\|&#34;</span>, 2);
+</span></span><span style="display:flex;"><span>    String seq <span style="color:#f92672">=</span> parts<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>    String payload <span style="color:#f92672">=</span> parts.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> 1 <span style="color:#f92672">?</span> parts<span style="color:#f92672">[</span>1<span style="color:#f92672">]</span> : <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>    String replyText <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ACK|&#34;</span> <span style="color:#f92672">+</span> seq <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;|&#34;</span> <span style="color:#f92672">+</span> payload;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> reply <span style="color:#f92672">=</span> replyText.<span style="color:#a6e22e">getBytes</span>(java.<span style="color:#a6e22e">nio</span>.<span style="color:#a6e22e">charset</span>.<span style="color:#a6e22e">StandardCharsets</span>.<span style="color:#a6e22e">UTF_8</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">var</span> response <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">DatagramPacket</span>(reply, reply.<span style="color:#a6e22e">length</span>, packet.<span style="color:#a6e22e">getAddress</span>(), packet.<span style="color:#a6e22e">getPort</span>());
 </span></span><span style="display:flex;"><span>    socket.<span style="color:#a6e22e">send</span>(response);
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Server phản hồi lại chuỗi ACK giúp client biết gói đã đến.</p>
+</span></span></code></pre></div><p>Client có thể gửi <code>&quot;1|PING&quot;</code> và chờ phản hồi <code>&quot;ACK|1|PING&quot;</code> để biết gói đã đến.</p>
 <h2 id="tổng-kết">Tổng kết</h2>
 <ul>
-<li>Với UDP cần tự định nghĩa cơ chế tin cậy phù hợp với bài toán.</li>
-<li>Nên log lại thời gian round-trip để dễ phân tích hiệu năng.</li>
+<li>Với UDP phải tự định nghĩa độ tin cậy nếu dữ liệu quan trọng.</li>
+<li>Kích thước gói nhỏ giúp giảm rủi ro mất gói do phân mảnh.</li>
 <li>Buổi sau sẽ ghép kiến thức đa luồng để cải thiện throughput.</li>
 </ul>
 

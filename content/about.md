@@ -6,7 +6,7 @@ description = "Thông tin cá nhân, mục tiêu học tập và định hướn
 
 ## Xin chào!
 
-Mình là **Nguyễn Tài Trung**, sinh viên năm 3 ngành Công nghệ Thông tin, chuyên ngành An ninh Mạng. Trong học kỳ này, mình lựa chọn học phần Lập Trình Mạng nhằm củng cố kiến thức nền tảng và nâng cao khả năng xây dựng các ứng dụng giao tiếp qua mạng Internet. Môn học giúp mình tiếp cận một cách có hệ thống từ các khái niệm mạng cơ bản cho đến việc triển khai các mô hình client–server trong thực tế.
+Mình là **Nguyễn Tài Trung**, sinh viên năm 4 ngành Công nghệ Thông tin, chuyên ngành An ninh Mạng. Trong học kỳ này, mình lựa chọn học phần Lập Trình Mạng nhằm củng cố kiến thức nền tảng và nâng cao khả năng xây dựng các ứng dụng giao tiếp qua mạng Internet. Môn học giúp mình tiếp cận một cách có hệ thống từ các khái niệm mạng cơ bản cho đến việc triển khai các mô hình client–server trong thực tế.
 
 ### Ngành học & trường
 - Ngành: Công nghệ Thông tin – chuyên ngành An Ninh Mạng.

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi-vn">
-  <head>
+  <head><script src="/Blog_Myself/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Blog_Myself/livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buổi 1 (11/11) – Tổng quan khóa học | Blog Lập Trình Mạng</title>
@@ -24,7 +24,7 @@
     <div class="site-wrapper">
       <header class="site-header">
         <div class="container site-header__inner">
-          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+          <a class="logo" href="http://localhost:1313/Blog_Myself/">
             <span>Blog Lập Trình Mạng</span>
           </a>
           <nav>
@@ -35,31 +35,31 @@
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                  <a href="http://localhost:1313/Blog_Myself/#hero">Home</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                  <a href="http://localhost:1313/Blog_Myself/blog/">Blog</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                  <a href="http://localhost:1313/Blog_Myself/course/">Course</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                  <a href="http://localhost:1313/Blog_Myself/about/">About</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                  <a href="http://localhost:1313/Blog_Myself/contact/">Contact</a>
                 
               
             </div>
@@ -94,7 +94,7 @@
       
         
       
-      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 1 (11/11) – Tổng quan khóa học" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+      <img src="/Blog_Myself/images/buoi1.png" alt="Buổi 1 (11/11) – Tổng quan khóa học" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
     
     <article class="post-content">
       
@@ -118,8 +118,20 @@
 <li>Lộ trình bài lab: từ Socket cơ bản tới Multicast &amp; RMI.</li>
 <li>Nguyên tắc viết báo cáo: trình bày lý thuyết, sơ đồ, mã nguồn và kết quả kiểm thử.</li>
 </ol>
+<p>Ngoài các nội dung trên, giảng viên nhấn mạnh quy trình làm bài:</p>
+<ul>
+<li>Báo cáo phải có mục tiêu, sơ đồ luồng dữ liệu, ảnh minh chứng và phần nhận xét cuối.</li>
+<li>File nộp nên đặt tên thống nhất theo buổi học để dễ tra cứu.</li>
+<li>Các công cụ kiểm tra cơ bản: <code>ping</code>, <code>tracert/traceroute</code>, <code>netstat</code>, Wireshark.</li>
+</ul>
 <h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
 <p>Mình ghi chú lại cách giảng viên đánh giá: mỗi lab cần có mục tiêu, sơ đồ trao đổi gói tin và kiểm chứng kết quả bằng hình ảnh/ghi log. Việc nắm rõ tiêu chí ngay từ buổi đầu giúp tiết kiệm thời gian sửa bài. Ngoài ra, buổi này cũng nhấn mạnh mối liên hệ giữa mô hình TCP/IP với Socket API trên Java, vì vậy mình ôn lại từng layer và ví dụ loại ứng dụng phù hợp.</p>
+<p>Mình cũng lập checklist chuẩn bị môi trường để tránh lỗi khi chạy lab:</p>
+<ul>
+<li>JDK LTS, IDE (IntelliJ/VSCode) và cấu hình encoding UTF-8.</li>
+<li>Kiểm tra quyền firewall, đặc biệt khi mở cổng server.</li>
+<li>Chuẩn bị repo Git để lưu code, log và ảnh chụp màn hình.</li>
+</ul>
 <h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
 <p>Để chắc chắn môi trường chạy ổn, mình viết chương trình kiểm tra phiên bản Java và hostname:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">HelloNetwork</span> {

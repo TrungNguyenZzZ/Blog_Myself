@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Concurrency on Blog Lập Trình Mạng</title>
-    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/tags/concurrency/</link>
+    <link>http://localhost:1313/Blog_Myself/tags/concurrency/</link>
     <description>Recent content in Concurrency on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Mon, 16 Dec 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/tags/concurrency/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/Blog_Myself/tags/concurrency/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi 7 (16/12) – Đa tuyến và xử lý đồng thời</title>
-      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-7-da-tuyen-va-xu-ly-dong-thoi/</link>
+      <link>http://localhost:1313/Blog_Myself/blog/buoi-7-da-tuyen-va-xu-ly-dong-thoi/</link>
       <pubDate>Mon, 16 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/blog/buoi-7-da-tuyen-va-xu-ly-dong-thoi/</guid>
-      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Biết lựa chọn mô hình thread phù hợp (per-connection, thread-pool).&lt;/li&gt;&#xA;&lt;li&gt;Ngăn chặn race condition khi chia sẻ tài nguyên chung.&lt;/li&gt;&#xA;&lt;li&gt;Ghi nhận số lượng client đang kết nối theo thời gian thực.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;ExecutorService&lt;/code&gt; và pattern submit task cho từng client.&lt;/li&gt;&#xA;&lt;li&gt;Sử dụng &lt;code&gt;ConcurrentHashMap&lt;/code&gt; để lưu trạng thái kết nối.&lt;/li&gt;&#xA;&lt;li&gt;Kết hợp synchronized/lock để bảo vệ tài nguyên quan trọng.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Mình refactor bài TCP trước đó để tận dụng &lt;code&gt;Executors.newFixedThreadPool(8)&lt;/code&gt;. Nhờ vậy server không tạo quá nhiều thread dẫn đến cạn kiệt tài nguyên. Ngoài ra, mình thêm bộ đếm &lt;code&gt;AtomicInteger&lt;/code&gt; để biết hiện có bao nhiêu client online. Báo cáo cũng so sánh thời gian phản hồi giữa mô hình tuần tự và thread-pool.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/Blog_Myself/blog/buoi-7-da-tuyen-va-xu-ly-dong-thoi/</guid>
+      <description>&lt;h2 id=&#34;mục-tiêu-buổi-học&#34;&gt;Mục tiêu buổi học&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Lựa chọn mô hình thread phù hợp (per-connection hoặc thread-pool).&lt;/li&gt;&#xA;&lt;li&gt;Ngăn chặn race condition khi chia sẻ tài nguyên chung.&lt;/li&gt;&#xA;&lt;li&gt;Theo dõi số lượng client đang kết nối theo thời gian thực.&lt;/li&gt;&#xA;&lt;li&gt;Tối ưu throughput mà không làm cạn tài nguyên hệ thống.&lt;/li&gt;&#xA;&lt;li&gt;Biết cách dừng server an toàn khi kết thúc bài lab.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;kiến-thức-chính&#34;&gt;Kiến thức chính&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;code&gt;ExecutorService&lt;/code&gt; và pattern submit task cho từng client.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;ConcurrentHashMap&lt;/code&gt;/&lt;code&gt;AtomicInteger&lt;/code&gt; để chia sẻ dữ liệu an toàn.&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;synchronized&lt;/code&gt;/&lt;code&gt;Lock&lt;/code&gt; khi cần bảo vệ vùng dữ liệu quan trọng.&lt;/li&gt;&#xA;&lt;li&gt;Chi phí tạo thread và lợi ích của thread pool cố định.&lt;/li&gt;&#xA;&lt;li&gt;Quy trình đóng socket trong &lt;code&gt;try/finally&lt;/code&gt; để tránh rò rỉ.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;phân-tích--giải-thích&#34;&gt;Phân tích &amp;amp; giải thích&lt;/h2&gt;&#xA;&lt;p&gt;Thread-per-connection dễ hiểu nhưng có nguy cơ tạo quá nhiều thread khi client tăng đột biến, dẫn đến quá tải CPU và RAM. Vì vậy, nhóm mình chuyển sang thread pool để giới hạn số luồng xử lý đồng thời. Điều này giúp server ổn định hơn khi có nhiều client kết nối cùng lúc.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Blog Lập Trình Mạng</title>
-    <link>https://TrungNguyenZzZ.github.io/Blog_Myself/categories/</link>
+    <link>http://localhost:1313/Blog_Myself/categories/</link>
     <description>Recent content in Categories on Blog Lập Trình Mạng</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Mon, 23 Dec 2024 09:00:00 +0700</lastBuildDate>
-    <atom:link href="https://TrungNguyenZzZ.github.io/Blog_Myself/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Dec 2024 09:00:00 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/Blog_Myself/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Buổi Học</title>
-      <link>https://TrungNguyenZzZ.github.io/Blog_Myself/categories/bu%E1%BB%95i-h%E1%BB%8Dc/</link>
-      <pubDate>Mon, 23 Dec 2024 09:00:00 +0700</pubDate>
-      <guid>https://TrungNguyenZzZ.github.io/Blog_Myself/categories/bu%E1%BB%95i-h%E1%BB%8Dc/</guid>
+      <link>http://localhost:1313/Blog_Myself/categories/bu%E1%BB%95i-h%E1%BB%8Dc/</link>
+      <pubDate>Mon, 30 Dec 2024 09:00:00 +0700</pubDate>
+      <guid>http://localhost:1313/Blog_Myself/categories/bu%E1%BB%95i-h%E1%BB%8Dc/</guid>
       <description></description>
     </item>
   </channel>

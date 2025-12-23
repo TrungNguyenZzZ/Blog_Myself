@@ -56,6 +56,12 @@ week = 8
 title = "Multicast UDP & Java RMI"
 date = "23/12"
 notes = ["MulticastSocket", "Registry & Stub", "Đánh giá cuối khóa"]
+
+[[outline]]
+week = 9
+title = "Tổng kết khóa học"
+date = "30/12"
+notes = ["Ôn tập toàn bộ nội dung", "Đánh giá kỹ năng đạt được", "Định hướng dự án tiếp theo"]
 +++
 
 Môn học **Lập Trình Mạng**, dưới sự giảng dạy của *Tiến sĩ Nguyễn Quang Trung*, cung cấp cho sinh viên nền tảng kiến thức và kỹ năng cốt lõi về lập trình các ứng dụng giao tiếp qua mạng máy tính. Thông qua môn học, sinh viên được tiếp cận có hệ thống từ các khái niệm mạng cơ bản, mô hình TCP/IP cho đến việc triển khai các ứng dụng client–server sử dụng socket TCP, UDP, xử lý đa luồng và các kỹ thuật nâng cao như Multicast UDP và Java RMI. Phương pháp giảng dạy chú trọng kết hợp giữa lý thuyết và thực hành, giúp sinh viên không chỉ hiểu nguyên lý hoạt động của hệ thống mạng mà còn có khả năng xây dựng, phân tích và mở rộng các chương trình mạng trong môi trường thực tế.

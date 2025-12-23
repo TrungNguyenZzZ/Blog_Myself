@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi-vn">
-  <head>
+  <head><script src="/Blog_Myself/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=Blog_Myself/livereload" data-no-instant defer></script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Buổi 2 (18/11) – Kiến thức nền tảng | Blog Lập Trình Mạng</title>
@@ -24,7 +24,7 @@
     <div class="site-wrapper">
       <header class="site-header">
         <div class="container site-header__inner">
-          <a class="logo" href="https://TrungNguyenZzZ.github.io/Blog_Myself/">
+          <a class="logo" href="http://localhost:1313/Blog_Myself/">
             <span>Blog Lập Trình Mạng</span>
           </a>
           <nav>
@@ -35,31 +35,31 @@
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/#hero">Home</a>
+                  <a href="http://localhost:1313/Blog_Myself/#hero">Home</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/blog/">Blog</a>
+                  <a href="http://localhost:1313/Blog_Myself/blog/">Blog</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/course/">Course</a>
+                  <a href="http://localhost:1313/Blog_Myself/course/">Course</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/about/">About</a>
+                  <a href="http://localhost:1313/Blog_Myself/about/">About</a>
                 
               
                 
                 
                   
-                  <a href="https://TrungNguyenZzZ.github.io/Blog_Myself/contact/">Contact</a>
+                  <a href="http://localhost:1313/Blog_Myself/contact/">Contact</a>
                 
               
             </div>
@@ -83,7 +83,7 @@
     <h1 class="section__heading">Buổi 2 (18/11) – Kiến thức nền tảng</h1>
     <p class="post-hero__meta">
       18 Nov 2024
-       · 2 phút đọc
+       · 3 phút đọc
        · 3 tags
     </p>
   </section>
@@ -94,7 +94,7 @@
       
         
       
-      <img src="/Blog_Myself/images/network-placeholder.png" alt="Buổi 2 (18/11) – Kiến thức nền tảng" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
+      <img src="/Blog_Myself/images/buoi2.jpg" alt="Buổi 2 (18/11) – Kiến thức nền tảng" loading="lazy" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-soft);margin-bottom:2rem;" />
     
     <article class="post-content">
       
@@ -108,30 +108,39 @@
       
       <h2 id="mục-tiêu-buổi-học">Mục tiêu buổi học</h2>
 <ul>
-<li>Ghi nhớ mối liên hệ giữa OSI 7 lớp và TCP/IP.</li>
-<li>Nhận biết khi nào nên chọn TCP hay UDP.</li>
-<li>Hiểu cấu trúc cơ bản của Socket API trong Java.</li>
+<li>Ghi nhớ mối liên hệ giữa OSI 7 lớp và TCP/IP 4 lớp để định vị lỗi nhanh.</li>
+<li>Nhận biết khi nào nên chọn TCP hay UDP dựa trên độ tin cậy và độ trễ.</li>
+<li>Hiểu vai trò của IP, port và socket trong một kết nối mạng.</li>
+<li>Nắm quy trình bắt tay TCP và cơ chế đóng kết nối an toàn.</li>
+<li>Biết các tham số cơ bản khi khởi tạo socket (timeout, backlog, buffer).</li>
 </ul>
 <h2 id="kiến-thức-chính">Kiến thức chính</h2>
 <ol>
-<li>Layer Transport và nhiệm vụ đảm bảo tin cậy/không tin cậy.</li>
-<li>Định dạng tiêu đề TCP/UDP, ý nghĩa từng trường.</li>
-<li>Luồng xử lý khi gọi <code>new Socket()</code> và <code>new ServerSocket()</code>.</li>
+<li>Ánh xạ tầng OSI sang TCP/IP: Application ↔ (Application), Transport ↔ (TCP/UDP), Internet ↔ (IP), Link ↔ (Ethernet/Wi-Fi).</li>
+<li>TCP header và ý nghĩa các trường: Source/Dest port, Sequence, ACK, Window, Flags (SYN/ACK/FIN).</li>
+<li>UDP header tối giản (Source/Dest port, Length, Checksum) và đặc tính không đảm bảo.</li>
+<li>Vòng đời kết nối TCP: DNS → connect → 3-way handshake → truyền dữ liệu → FIN/ACK → TIME_WAIT.</li>
+<li>Công cụ quan sát kết nối: <code>netstat</code>/<code>ss</code> để xem trạng thái port, Wireshark để bắt gói.</li>
 </ol>
 <h2 id="phân-tích--giải-thích">Phân tích &amp; giải thích</h2>
-<p>Giảng viên yêu cầu trình bày lại quá trình handshake của TCP và cách UDP gửi datagram độc lập. Mình rút ra rằng socket chỉ là điểm cuối của kết nối, còn logic truyền thông phụ thuộc vào cách đóng gói dữ liệu. Khi viết báo cáo, mình so sánh ưu/nhược từng giao thức và minh họa bằng trường hợp sử dụng thực tế như truyền file (TCP) hay gửi thông báo nhanh (UDP).</p>
+<p>Khi ghép OSI với TCP/IP, mình dễ dàng xác định lớp nào đang gặp vấn đề. Ví dụ lỗi ở tầng Application thường xuất hiện dưới dạng sai định dạng dữ liệu, còn lỗi ở tầng Transport liên quan đến timeout hoặc mất gói. Cách suy nghĩ theo lớp giúp mình viết báo cáo có cấu trúc hơn và giải thích được nguyên nhân.</p>
+<p>TCP tạo kết nối đáng tin cậy nhờ sequence/acknowledgment và cơ chế cửa sổ trượt (window). Ngược lại, UDP nhẹ hơn nhưng không đảm bảo thứ tự hay giao hàng. Vì vậy, bài toán truyền file, đăng nhập, hoặc giao dịch nên dùng TCP, còn thông báo thời gian thực, game, hoặc streaming ngắn có thể cân nhắc UDP để giảm độ trễ.</p>
+<p>Khi gọi <code>new Socket()</code> trong Java, chương trình sẽ tiến hành phân giải DNS và bắt tay TCP. Nếu không đặt timeout, thao tác có thể treo lâu khi mạng lỗi. Đây là lý do giảng viên yêu cầu luôn ghi rõ timeout và thông số kết nối trong báo cáo.</p>
 <h2 id="ví-dụ-minh-họa--code">Ví dụ minh họa / Code</h2>
-<p>Đoạn code nhỏ sau mô tả cách mở socket TCP và in thông tin kết nối:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Socket</span>(<span style="color:#e6db74">&#34;example.com&#34;</span>, 80)) {
+<p>Đoạn code sau kết nối TCP có timeout và in thông tin socket:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">var</span> host <span style="color:#f92672">=</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">InetAddress</span>.<span style="color:#a6e22e">getByName</span>(<span style="color:#e6db74">&#34;example.com&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (<span style="color:#66d9ef">var</span> socket <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">Socket</span>()) {
+</span></span><span style="display:flex;"><span>  socket.<span style="color:#a6e22e">connect</span>(<span style="color:#66d9ef">new</span> java.<span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">InetSocketAddress</span>(host, 80), 3000);
+</span></span><span style="display:flex;"><span>  socket.<span style="color:#a6e22e">setSoTimeout</span>(3000);
 </span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Local: &#34;</span> <span style="color:#f92672">+</span> socket.<span style="color:#a6e22e">getLocalAddress</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">+</span> socket.<span style="color:#a6e22e">getLocalPort</span>());
 </span></span><span style="display:flex;"><span>  System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(<span style="color:#e6db74">&#34;Remote: &#34;</span> <span style="color:#f92672">+</span> socket.<span style="color:#a6e22e">getInetAddress</span>() <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;:&#34;</span> <span style="color:#f92672">+</span> socket.<span style="color:#a6e22e">getPort</span>());
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Chỉ cần chạy đoạn code là có thể quan sát port được OS cấp phát và kiểm tra firewall.</p>
+</span></span></code></pre></div><p>Kết quả cho thấy port nguồn do hệ điều hành cấp phát (thường trong dải 49152–65535).</p>
 <h2 id="tổng-kết">Tổng kết</h2>
 <ul>
-<li>Ghi nhớ rõ các trường trong header TCP/UDP để dễ debug.</li>
-<li>Khi thiết kế bài lab nên quyết định giao thức trước khi viết code.</li>
-<li>Chuẩn bị slide mô tả handshake để dùng ở các lab tiếp theo.</li>
+<li>Nắm rõ handshake giúp giải thích được vì sao kết nối TCP ổn định hơn.</li>
+<li>Xác định đúng lớp và giao thức trước khi viết code giúp giảm lỗi logic.</li>
+<li>Chuẩn bị kiến thức nền tảng cho các buổi lập trình socket tiếp theo.</li>
 </ul>
 
     </article>
@@ -163,6 +172,12 @@
       <div class="related-grid">
         
           <article class="card">
+            <h3>Buổi 9 (30/12) – Tổng kết khóa học</h3>
+            <p>Tổng hợp kiến thức đã học, đánh giá kỹ năng đạt được và kế hoạch ứng dụng thực tế.</p>
+            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-9-tong-ket-khoa-hoc/">Đọc tiếp →</a>
+          </article>
+        
+          <article class="card">
             <h3>Buổi 8 (23/12) – Multicast UDP &amp; Java RMI</h3>
             <p>Kết hợp MulticastSocket cho thông báo nhóm và triển khai dịch vụ Java RMI đơn giản.</p>
             <a class="button button--ghost" href="/Blog_Myself/blog/buoi-8-multicast-udp-va-java-rmi/">Đọc tiếp →</a>
@@ -172,12 +187,6 @@
             <h3>Buổi 6 (09/12) – Lập trình socket UDP</h3>
             <p>Triển khai DatagramSocket, xử lý timeout và bổ sung ACK thủ công.</p>
             <a class="button button--ghost" href="/Blog_Myself/blog/buoi-6-lap-trinh-socket-udp/">Đọc tiếp →</a>
-          </article>
-        
-          <article class="card">
-            <h3>Buổi 5 (02/12) – Lập trình sockets TCP</h3>
-            <p>Xây dựng server TCP đơn giản, xử lý nhiều client và thiết kế giao thức text.</p>
-            <a class="button button--ghost" href="/Blog_Myself/blog/buoi-5-lap-trinh-socket-tcp/">Đọc tiếp →</a>
           </article>
         
       </div>

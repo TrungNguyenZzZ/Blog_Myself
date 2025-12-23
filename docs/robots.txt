@@ -1,3 +1,2 @@
 User-agent: *
-Allow: /
-Sitemap: https://TrungNguyenZzZ.github.io/sitemap.xml
+Disallow: /
